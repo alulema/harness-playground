@@ -1,0 +1,59 @@
+[
+  {
+    "id": "lease-guardrails",
+    "title": "Lease Contract Guardrails",
+    "description": "Finds renewal, deposit, and notice obligations in a residential lease.",
+    "prompt": "Review this lease clause for renewal deadlines, deposit deductions, and notice obligations. Cite the exact language and flag anything that needs a lawyer's review.",
+    "taskId": "lease-review-042",
+    "domain": "Legal LAB",
+    "baseOutput": "The lease renews automatically unless notice is provided. The security deposit may be used for damages. Consult an attorney for legal advice.",
+    "optimizedOutput": "The lease auto-renews unless either party gives written notice at least 60 days before the term ends (Section 8). Section 4 permits deposit deductions for documented damage beyond ordinary wear; it does not authorize deductions for unpaid rent. The clause does not specify a deposit-return deadline. Confirm local statutory requirements with a licensed attorney.",
+    "totalImprovement": 18.4,
+    "steps": [
+      {"iteration":1,"stage":"propose","component":"system_prompt","proposal":"Require clause-level citations and separate contract terms from legal interpretation.","probeScore":0.71,"accepted":true,"deltaScore":0.08},
+      {"iteration":1,"stage":"probe","component":"system_prompt","proposal":"Clause citation and interpretation-separation probe.","probeScore":0.79,"accepted":true,"deltaScore":0.08},
+      {"iteration":1,"stage":"compose","component":"system_prompt","proposal":"Added contract-grounding and citation rule.","probeScore":0.79,"accepted":true,"deltaScore":0.08},
+      {"iteration":2,"stage":"propose","component":"tool_guidance","proposal":"Add a checklist for renewal notice, deposit deductions, and return timelines.","probeScore":0.79,"accepted":true,"deltaScore":0.11},
+      {"iteration":2,"stage":"probe","component":"tool_guidance","proposal":"Checklist coverage probe across contract variations.","probeScore":0.9,"accepted":true,"deltaScore":0.11},
+      {"iteration":2,"stage":"compose","component":"tool_guidance","proposal":"Composed the lease review checklist into tool guidance.","probeScore":0.9,"accepted":true,"deltaScore":0.11}
+    ]
+  },
+  {
+    "id": "jobbench-screening",
+    "title": "JobBench Fair Screening",
+    "description": "Ranks candidates against role requirements without inferring protected traits.",
+    "prompt": "Compare these candidate summaries with the job requirements. Identify evidence for each required qualification and avoid making assumptions about personal characteristics.",
+    "taskId": "jobbench-screen-018",
+    "domain": "JobBench",
+    "baseOutput": "Candidate A looks like the strongest fit due to their background. Candidate B has relevant experience but may not be as adaptable.",
+    "optimizedOutput": "Candidate A meets the required Python and distributed-systems experience, with evidence in the 2022–2025 platform role. Candidate B meets the Python requirement and has adjacent systems experience; distributed-systems depth is not stated. The summaries do not provide comparable evidence for the preferred mentoring qualification. No ranking is assigned from unstated traits; use a structured interview to resolve the evidence gap.",
+    "totalImprovement": 14.2,
+    "steps": [
+      {"iteration":1,"stage":"propose","component":"system_prompt","proposal":"Score only explicit role criteria and quote evidence for every assessment.","probeScore":0.68,"accepted":true,"deltaScore":0.09},
+      {"iteration":1,"stage":"probe","component":"system_prompt","proposal":"Evidence-grounded candidate comparison probe.","probeScore":0.77,"accepted":true,"deltaScore":0.09},
+      {"iteration":1,"stage":"compose","component":"system_prompt","proposal":"Added explicit-evidence and job-criteria guardrail.","probeScore":0.77,"accepted":true,"deltaScore":0.09},
+      {"iteration":2,"stage":"propose","component":"memory","proposal":"When evidence is missing, report the gap and suggest a consistent follow-up instead of inferring traits.","probeScore":0.77,"accepted":true,"deltaScore":0.1},
+      {"iteration":2,"stage":"probe","component":"memory","proposal":"Missing-evidence and consistent-follow-up probe.","probeScore":0.87,"accepted":true,"deltaScore":0.1},
+      {"iteration":2,"stage":"compose","component":"memory","proposal":"Composed the evidence-gap behavior into agent memory.","probeScore":0.87,"accepted":true,"deltaScore":0.1}
+    ]
+  },
+  {
+    "id": "workbuddy-planning",
+    "title": "WorkBuddy Project Planning",
+    "description": "Turns an ambiguous request into a scoped, dependency-aware action plan.",
+    "prompt": "Help plan a small internal launch. Separate what is known from assumptions, identify dependencies, and recommend the first useful actions.",
+    "taskId": "workbuddy-plan-027",
+    "domain": "WorkBuddy",
+    "baseOutput": "Start by aligning the team, drafting a launch plan, and setting up communications. Then track progress and adjust as needed.",
+    "optimizedOutput": "Known: the launch is internal and described as small. Unknown: audience, target date, owner, and success measure. First, name one accountable owner and confirm the launch date and audience. Then draft a one-page scope and define a measurable success signal. Communications and rollout tasks depend on those decisions; avoid scheduling them until the owner confirms the scope.",
+    "totalImprovement": 16.7,
+    "steps": [
+      {"iteration":1,"stage":"propose","component":"system_prompt","proposal":"Separate confirmed facts from assumptions before recommending actions.","probeScore":0.7,"accepted":true,"deltaScore":0.08},
+      {"iteration":1,"stage":"probe","component":"system_prompt","proposal":"Fact-versus-assumption planning probe.","probeScore":0.78,"accepted":true,"deltaScore":0.08},
+      {"iteration":1,"stage":"compose","component":"system_prompt","proposal":"Composed a knowns-and-unknowns planning step.","probeScore":0.78,"accepted":true,"deltaScore":0.08},
+      {"iteration":2,"stage":"propose","component":"tool_guidance","proposal":"Order recommended tasks by dependency and surface the next decision needed.","probeScore":0.78,"accepted":true,"deltaScore":0.09},
+      {"iteration":2,"stage":"probe","component":"tool_guidance","proposal":"Dependency-aware action ordering probe.","probeScore":0.89,"accepted":true,"deltaScore":0.09},
+      {"iteration":2,"stage":"compose","component":"tool_guidance","proposal":"Composed dependency ordering and next-decision guidance.","probeScore":0.89,"accepted":true,"deltaScore":0.09}
+    ]
+  }
+]

@@ -1,0 +1,62 @@
+---
+import Playground from './Playground';
+import '../../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#09090d" />
+    <meta name="description" content="An interactive Harness² agent optimization demo: Propose, Probe, Compose." />
+    <title>Harness² Playground — Agent Optimization Lab</title>
+    <link rel="stylesheet" href="https://alexisalulema.com/demo-theme.css" />
+    <script is:inline>
+      window.DEMO_INFO = {
+        title: "Harness² AI Agent Playground",
+        titleEs: "Playground de agentes IA Harness²",
+        overview: "Harness² improves an agent's instructions—not its model—in a repeating loop: Propose a change to its prompt, memory, or tool guidance; Probe it on task variations; then Compose it into the harness if scores improve. This demo replays precomputed traces; it does not run a model.",
+        overviewEs: "Harness² mejora las instrucciones de un agente —no el modelo— en un ciclo: propone un cambio al prompt, la memoria o la guía de herramientas; lo prueba con variaciones de tareas; y lo integra al harness si mejora la puntuación. Esta demo reproduce trazas precalculadas; no ejecuta un modelo.",
+        architecture: {
+          description: "A browser UI sends a task to a small FastAPI service. The service streams a precomputed evaluation trace over SSE and serves the static Astro/React app from the same origin.",
+          descriptionEs: "La interfaz envía una tarea a un servicio FastAPI. El servicio transmite por SSE una traza de evaluación precalculada y sirve la aplicación Astro/React desde el mismo origen.",
+          diagram: `flowchart LR
+  U["Browser"] -->|HTTP + SSE| API["FastAPI service"]
+  API -->|stream evaluation trace| U
+  API --> WEB["Static Astro + React UI"]
+  DATA["Public cached scenarios"] --> API`
+        },
+        infra: [
+          { name: "Astro + React", role: "Responsive interactive UI.", roleEs: "Interfaz interactiva adaptable." },
+          { name: "FastAPI", role: "Serves the app and streams evaluation events over SSE.", roleEs: "Sirve la aplicación y transmite eventos de evaluación por SSE." },
+          { name: "GHCR / Docker", role: "Portable container image; static frontend and API in one service.", roleEs: "Imagen portátil; frontend estático y API en un solo servicio." }
+        ],
+        sizing: "Single container listening on port 8080. No external model or database is required.",
+        sizingEs: "Un contenedor escuchando en el puerto 8080. No requiere modelos externos ni base de datos.",
+        design: [
+          "Stateless by design; all scenario traces are public data baked into the image.",
+          "The Live mode streams staged evaluation events; it does not call an LLM or run the original Harness² optimizer."
+        ],
+        designEs: [
+          "Diseñado sin estado; las trazas son datos públicos incluidos en la imagen.",
+          "El modo Live transmite etapas de evaluación; no invoca un LLM ni ejecuta el optimizador Harness² original."
+        ],
+        limitations: [
+          "Scores and outputs are illustrative precomputed traces, not live model evaluations.",
+          "Custom prompts select a domain trace; they do not trigger inference."
+        ],
+        limitationsEs: [
+          "Las puntuaciones y salidas son trazas ilustrativas precalculadas, no evaluaciones de modelos en vivo.",
+          "Los prompts personalizados seleccionan una traza por dominio; no ejecutan inferencia."
+        ],
+        links: { repo: "https://github.com/alulema/harness-playground" },
+        lang: "auto"
+      };
+    </script>
+    <script is:inline src="https://alexisalulema.com/demo-panel.js" defer></script>
+  </head>
+  <body>
+    <Playground client:load />
+  </body>
+</html>

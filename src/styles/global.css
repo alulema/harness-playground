@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  --demo-bg: var(--color-bg, #09090d);
+  --demo-card: var(--color-bg-card, #111116);
+  --demo-text: var(--color-text, #f4f3f7);
+  --demo-muted: var(--color-text-muted, #8b8993);
+  --demo-border: var(--color-border, rgba(255, 255, 255, 0.09));
+  --demo-accent: var(--color-accent, #8b70ff);
+  font-family: var(--font-sans, Inter, ui-sans-serif, system-ui, sans-serif);
+  background: var(--demo-bg);
+  color: var(--demo-text);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 50% -18%, color-mix(in srgb, var(--demo-accent) 15%, transparent), transparent 52%),
+    var(--demo-bg);
+}
+button, input, select, textarea { font: inherit; }
+::selection { color: white; background: var(--demo-accent); }
+
+.panel { border: 1px solid var(--demo-border); background: var(--demo-card); box-shadow: 0 16px 36px rgb(0 0 0 / 8%); }
+.panel-inset { border: 1px solid color-mix(in srgb, var(--demo-border) 70%, transparent); background: color-mix(in srgb, var(--demo-bg) 85%, transparent); }
+.muted { color: var(--demo-muted); }
+.eyebrow { color: var(--demo-muted); font: 600 10px/1.4 var(--font-mono, ui-monospace, monospace); letter-spacing: .14em; text-transform: uppercase; }
+.accent-text { color: var(--demo-accent); }
+.positive-text { color: #34d399; }
+.icon-chip { display: grid; width: 40px; height: 40px; flex: none; place-items: center; border: 1px solid color-mix(in srgb, var(--demo-accent) 24%, transparent); border-radius: 12px; background: color-mix(in srgb, var(--demo-accent) 10%, transparent); color: var(--demo-accent); }
+.field-label { display: flex; flex-direction: column; gap: 8px; color: var(--demo-muted); font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.field-control { width: 100%; min-height: 42px; border: 1px solid var(--demo-border); border-radius: 9px; background: var(--demo-bg); padding: 0 12px; color: var(--demo-text); font-size: 13px; letter-spacing: normal; outline: none; text-transform: none; transition: border-color .15s; }
+.field-control:focus { border-color: color-mix(in srgb, var(--demo-accent) 70%, var(--demo-border)); }
+.field-control:disabled { cursor: not-allowed; opacity: .55; }
+.field-control option { background: var(--demo-card); }
+.status-pill { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--demo-border); border-radius: 999px; background: color-mix(in srgb, var(--demo-card) 70%, transparent); padding: 6px 10px; color: var(--demo-muted); font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.status-running { border-color: color-mix(in srgb, var(--demo-accent) 30%, transparent); color: var(--demo-accent); }
+.status-done { border-color: rgb(52 211 153 / 20%); color: #34d399; }
+.live-dot, .activity-dot, .accent-dot { width: 7px; height: 7px; flex: none; border-radius: 999px; background: #34d399; }
+.live-dot { box-shadow: 0 0 9px rgb(52 211 153 / 50%); }
+.activity-dot { margin-top: 5px; background: var(--demo-accent); }
+.accent-dot { width: 16px; height: 6px; border-radius: 99px; background: var(--demo-accent); }
+.timeline-line { position: absolute; top: 15px; right: 16.5%; left: 16.5%; height: 1px; background: var(--demo-border); }
+.timeline-node { position: relative; z-index: 1; display: grid; width: 31px; height: 31px; place-items: center; border: 1px solid var(--demo-border); border-radius: 50%; background: var(--demo-card); color: var(--demo-muted); font: 600 10px var(--font-mono, ui-monospace, monospace); }
+.timeline-active { border-color: var(--demo-accent); background: color-mix(in srgb, var(--demo-accent) 14%, var(--demo-card)); color: var(--demo-accent); }
+.timeline-complete { border-color: rgb(52 211 153 / 50%); background: rgb(52 211 153 / 10%); color: #34d399; }
+.skeleton { height: 8px; animation: pulse 1.6s ease-in-out infinite; border-radius: 99px; background: color-mix(in srgb, var(--demo-muted) 12%, transparent); }
+.badge { display: inline-flex; align-items: center; gap: 7px; border: 1px solid color-mix(in srgb, var(--demo-accent) 24%, transparent); border-radius: 99px; background: color-mix(in srgb, var(--demo-accent) 8%, transparent); padding: 6px 11px; color: var(--demo-accent); font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.brand-mark { display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid color-mix(in srgb, var(--demo-accent) 30%, transparent); border-radius: 12px; background: color-mix(in srgb, var(--demo-accent) 12%, transparent); color: var(--demo-accent); font: 700 14px var(--font-mono, ui-monospace, monospace); }
+.accent-gradient { background: linear-gradient(100deg, var(--demo-accent), #cf9bff 55%, #82c7e8); background-clip: text; color: transparent; }
+.mode-switch { display: inline-flex; gap: 3px; border: 1px solid var(--demo-border); border-radius: 10px; background: var(--demo-card); padding: 4px; }
+.mode-button { display: inline-flex; align-items: center; gap: 6px; border: 0; border-radius: 7px; background: transparent; padding: 7px 10px; color: var(--demo-muted); font-size: 11px; cursor: pointer; }
+.mode-button[aria-pressed="true"] { background: color-mix(in srgb, var(--demo-text) 9%, transparent); color: var(--demo-text); }
+.mode-button:disabled { cursor: not-allowed; opacity: .5; }
+.button-primary { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 9px; background: var(--demo-accent); padding: 0 17px; color: white; font-size: 12px; font-weight: 650; box-shadow: 0 8px 24px color-mix(in srgb, var(--demo-accent) 24%, transparent); cursor: pointer; transition: filter .15s; }
+.button-primary:hover { filter: brightness(1.1); }
+.button-primary:disabled { cursor: not-allowed; opacity: .5; }
+.spinner { width: 15px; height: 15px; animation: spin 1s linear infinite; border: 2px solid rgb(255 255 255 / 35%); border-top-color: white; border-radius: 50%; }
+@keyframes pulse { 50% { opacity: .45; } }
+@keyframes spin { to { transform: rotate(360deg); } }
