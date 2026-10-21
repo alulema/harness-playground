@@ -1,7 +1,7 @@
 FROM node:22-alpine AS frontend
 WORKDIR /build
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm ci
 COPY astro.config.mjs tsconfig.json ./
 COPY src ./src
 RUN npm run build

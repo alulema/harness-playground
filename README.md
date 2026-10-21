@@ -16,6 +16,19 @@ docker run --rm -p 8080:8080 \
 
 Open `http://localhost:8080/`. The service listens on `0.0.0.0:8080`, serves the UI at `/`, and exposes `/healthz`. It is designed to run behind a reverse proxy or gateway that provides authentication and TLS; the app itself deliberately has neither.
 
+## Container image
+
+The GitHub Actions workflow builds and validates the image on pull requests to `main`. On pushes to `main`, it publishes `ghcr.io/alulema/harness-playground:latest`; on version tags (`v*`), it publishes the matching tag and commit SHA. The image targets `linux/amd64` and listens on port `8080`.
+
+To run a published image:
+
+```sh
+docker pull ghcr.io/alulema/harness-playground:latest
+docker run --rm -p 8080:8080 ghcr.io/alulema/harness-playground:latest
+```
+
+The first package publication may require setting the GHCR package visibility to **Public** in GitHub Packages before an unauthenticated deployment can pull it.
+
 ## Develop locally
 
 Prerequisites: Node.js 22+, npm, Python 3.13+, and Docker.
