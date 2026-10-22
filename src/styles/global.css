@@ -41,10 +41,14 @@ button, input, select, textarea { font: inherit; }
 .status-pill { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--demo-border); border-radius: 999px; background: color-mix(in srgb, var(--demo-card) 70%, transparent); padding: 6px 10px; color: var(--demo-muted); font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
 .status-running { border-color: color-mix(in srgb, var(--demo-accent) 30%, transparent); color: var(--demo-accent); }
 .status-done { border-color: rgb(52 211 153 / 20%); color: #34d399; }
+.status-error { border-color: rgb(248 113 113 / 30%); color: #f87171; }
 .live-dot, .activity-dot, .accent-dot { width: 7px; height: 7px; flex: none; border-radius: 999px; background: #34d399; }
 .live-dot { box-shadow: 0 0 9px rgb(52 211 153 / 50%); }
 .activity-dot { margin-top: 5px; background: var(--demo-accent); }
 .accent-dot { width: 16px; height: 6px; border-radius: 99px; background: var(--demo-accent); }
+.metric-card { display: flex; min-width: 0; flex-direction: column; gap: 5px; border: 1px solid var(--demo-border); border-radius: 10px; background: color-mix(in srgb, var(--demo-bg) 72%, transparent); padding: 10px; }
+.metric-label { color: var(--demo-muted); font-size: 9px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.metric-card strong { overflow-wrap: anywhere; font-size: 12px; font-weight: 650; }
 .timeline-line { position: absolute; top: 15px; right: 16.5%; left: 16.5%; height: 1px; background: var(--demo-border); }
 .timeline-node { position: relative; z-index: 1; display: grid; width: 31px; height: 31px; place-items: center; border: 1px solid var(--demo-border); border-radius: 50%; background: var(--demo-card); color: var(--demo-muted); font: 600 10px var(--font-mono, ui-monospace, monospace); }
 .timeline-active { border-color: var(--demo-accent); background: color-mix(in srgb, var(--demo-accent) 14%, var(--demo-card)); color: var(--demo-accent); }
