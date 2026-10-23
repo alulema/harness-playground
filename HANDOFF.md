@@ -39,7 +39,10 @@ El modo Live ejecuta una demostración acotada con el mismo modelo local como ge
 
 ## Estado
 
-El código de ejecución en vivo y una imagen local autocontenida ya se verificaron con Qwen; el contenedor completó un ciclo SSE. Aún debe publicarse la imagen nueva en GHCR y actualizarse el registro del sitio. La imagen `latest` publicada anteriormente corresponde a la versión previa con trazas precalculadas; no la uses para afirmar que el demo live ya está desplegado.
+- Imagen publicada: `ghcr.io/alulema/harness-playground:latest` (amd64, ≈2,8 GB) ya contiene el runtime en vivo con Qwen2.5 1.5B (predeterminado) y Gemma 2 2B (seleccionable); pull anónimo verificado.
+- Verificado en contenedor local (CPU): 2 iteraciones completan en ≈4,5 min con Qwen y ≈7 min con Gemma. Mantén la sesión del gateway abierta al menos ese tiempo; el servidor envía keepalives SSE cada 10 s.
+- Registro en `personal-website` ya fusionado en `staging` (alulema/personal-website#197 y #198: 2 vCPU / 4 GiB, startup probe 30 × 10 s, tarjeta EN/ES). Falta promover `staging` → `main` y verificar provisión, navegación y ejecución SSE desde el sitio.
+- Pendiente de medir en el entorno real: tiempo de arranque con la imagen de 2,8 GB y la duración de sesión del gateway frente a una corrida de 2 iteraciones con Gemma.
 
 ## Referencias
 
