@@ -23,7 +23,7 @@ import '../../styles/global.css';
           descriptionEs: "La interfaz Astro/React envía una tarea a FastAPI. FastAPI coordina el ciclo demostrativo de Harness², llama al modelo local de Ollama para propuestas, respuestas y evaluaciones comparativas, y transmite eventos al navegador mediante SSE.",
           diagram: `flowchart LR
   U["Browser"] -->|HTTP + SSE| API["FastAPI"]
-  API -->|Ollama API| MODEL["Qwen2.5 1.5B · local open weights"]
+  API -->|Ollama API| MODEL["Qwen2.5 1.5B / Gemma 2 2B · local open weights"]
   API -->|Propose · Probe · Compose events| U
   WEB["Astro + React static UI"] --> API
   CACHE["Cached example traces"] --> WEB`
@@ -31,11 +31,11 @@ import '../../styles/global.css';
         infra: [
           { name: "Astro + React", role: "Responsive UI with live SSE event updates.", roleEs: "Interfaz adaptable con eventos SSE en vivo." },
           { name: "FastAPI + Ollama", role: "Runs the bounded optimization demonstration and serves a local model.", roleEs: "Ejecuta la optimización demostrativa con límites y sirve un modelo local." },
-          { name: "Qwen2.5 1.5B Instruct", role: "Open-weight model bundled with the container; no external model API or key.", roleEs: "Modelo de pesos abiertos incluido en el contenedor; no necesita API externa ni clave." },
+          { name: "Qwen2.5 1.5B Instruct · Gemma 2 2B", role: "Open-weight models bundled with the container (Qwen is the default; Gemma is selectable); no external model API or key.", roleEs: "Modelos de pesos abiertos incluidos en el contenedor (Qwen es el predeterminado; Gemma es seleccionable); no necesita API externa ni clave." },
           { name: "GHCR / Docker", role: "Single container image with the UI, API, Ollama runtime, and model weights.", roleEs: "Imagen única con la interfaz, API, runtime Ollama y pesos del modelo." }
         ],
-        sizing: "Single CPU container listening on port 8080. The image bundles Qwen2.5 1.5B Instruct and requires sufficient memory for local inference; no external model API or database is required.",
-        sizingEs: "Un contenedor CPU que escucha en el puerto 8080. La imagen incluye Qwen2.5 1.5B Instruct y requiere memoria suficiente para inferencia local; no necesita API de modelos externa ni base de datos.",
+        sizing: "Single CPU container listening on port 8080. The image bundles Qwen2.5 1.5B Instruct and Gemma 2 2B and requires sufficient memory for local inference; no external model API or database is required.",
+        sizingEs: "Un contenedor CPU que escucha en el puerto 8080. La imagen incluye Qwen2.5 1.5B Instruct y Gemma 2 2B y requiere memoria suficiente para inferencia local; no necesita API de modelos externa ni base de datos.",
         design: [
           "Stateless; the model weights and public cached examples are bundled in the image.",
           "Live mode runs a bounded demonstration loop using a single local model for generation and judging.",

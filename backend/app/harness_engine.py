@@ -10,6 +10,13 @@ DOMAIN_PROBES = {
     "JobBench": "Review the same candidates again. Compare only job-related evidence, identify missing information, and do not infer protected or personal characteristics.",
     "WorkBuddy": "Revisit the same plan. Separate known facts from assumptions, surface the next decision, and order actions by dependency.",
 }
+def unwrap_schema_echo(value: Any) -> Any:
+    """Some small models wrap their answer in the schema's own {"type", "properties"} envelope."""
+    if isinstance(value, dict) and isinstance(value.get("properties"), dict) and "type" in value:
+        return value["properties"]
+    return value
+
+
 BASE_AGENT_INSTRUCTION = "You are an AI assistant. Complete the task directly and concisely in no more than 70 words."
 
 SYSTEM_SCHEMA = {
@@ -194,7 +201,7 @@ class HarnessEngine:
                 ):
                     yield {"event": item["type"], "data": item}
                 try:
-                    proposal = json.loads(self._last_generated)
+                    proposal = unwrap_schema_echo(json.loads(self._last_generated))
                     if not isinstance(proposal, dict):
                         raise ValueError("The proposal must be a JSON object.")
                     component = proposal.get("component")
@@ -269,11 +276,9 @@ class HarnessEngine:
                 ):
                     yield {"event": item["type"], "data": item}
                 try:
-                    judgment = json.loads(self._last_generated)
+                    judgment = unwrap_schema_echo(json.loads(self._last_generated))
                     if not isinstance(judgment, dict):
                         raise ValueError("The judgment must be a JSON object.")
-                    if isinstance(judgment.get("properties"), dict):
-                        judgment = judgment["properties"]
                     base_scores = judgment.get("base_scores")
                     candidate_scores = judgment.get("candidate_scores")
                     rationale = judgment.get("rationale") or "No rationale provided."
