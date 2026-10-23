@@ -16,39 +16,45 @@ import '../../styles/global.css';
       window.DEMO_INFO = {
         title: "Harness² AI Agent Playground",
         titleEs: "Playground de agentes IA Harness²",
-        overview: "Harness² improves an agent's instructions—not its model—in a repeating loop: Propose a change to its prompt, memory, or tool guidance; Probe it on task variations; then Compose it into the harness if scores improve. This demo replays precomputed traces; it does not run a model.",
-        overviewEs: "Harness² mejora las instrucciones de un agente —no el modelo— en un ciclo: propone un cambio al prompt, la memoria o la guía de herramientas; lo prueba con variaciones de tareas; y lo integra al harness si mejora la puntuación. Esta demo reproduce trazas precalculadas; no ejecuta un modelo.",
+        overview: "Harness² improves an agent's instructions—not its model—in a repeating loop: Propose one prompt, memory, or tool-guidance change; Probe it on task variations; then Compose it into the harness only if the same model's judge estimates a better result. This demo runs that loop live with a bundled open-weight model; scores are estimates, not objective benchmarks.",
+        overviewEs: "Harness² mejora las instrucciones de un agente —no el modelo— en un ciclo: propone un cambio al prompt, la memoria o la guía de herramientas; lo prueba con variaciones de la tarea; y solo integra el cambio si el juez del mismo modelo estima un mejor resultado. Esta demo ejecuta el ciclo en vivo con un modelo de pesos abiertos incluido; las puntuaciones son estimaciones, no benchmarks objetivos.",
         architecture: {
-          description: "A browser UI sends a task to a small FastAPI service. The service streams a precomputed evaluation trace over SSE and serves the static Astro/React app from the same origin.",
-          descriptionEs: "La interfaz envía una tarea a un servicio FastAPI. El servicio transmite por SSE una traza de evaluación precalculada y sirve la aplicación Astro/React desde el mismo origen.",
+          description: "The Astro/React UI sends a task to FastAPI. FastAPI coordinates the Harness² demonstration loop, calls the local Ollama model for proposals, task responses, and comparative judgments, and streams events to the browser over SSE.",
+          descriptionEs: "La interfaz Astro/React envía una tarea a FastAPI. FastAPI coordina el ciclo demostrativo de Harness², llama al modelo local de Ollama para propuestas, respuestas y evaluaciones comparativas, y transmite eventos al navegador mediante SSE.",
           diagram: `flowchart LR
-  U["Browser"] -->|HTTP + SSE| API["FastAPI service"]
-  API -->|stream evaluation trace| U
-  API --> WEB["Static Astro + React UI"]
-  DATA["Public cached scenarios"] --> API`
+  U["Browser"] -->|HTTP + SSE| API["FastAPI"]
+  API -->|Ollama API| MODEL["Qwen2.5 1.5B · local open weights"]
+  API -->|Propose · Probe · Compose events| U
+  WEB["Astro + React static UI"] --> API
+  CACHE["Cached example traces"] --> WEB`
         },
         infra: [
-          { name: "Astro + React", role: "Responsive interactive UI.", roleEs: "Interfaz interactiva adaptable." },
-          { name: "FastAPI", role: "Serves the app and streams evaluation events over SSE.", roleEs: "Sirve la aplicación y transmite eventos de evaluación por SSE." },
-          { name: "GHCR / Docker", role: "Portable container image; static frontend and API in one service.", roleEs: "Imagen portátil; frontend estático y API en un solo servicio." }
+          { name: "Astro + React", role: "Responsive UI with live SSE event updates.", roleEs: "Interfaz adaptable con eventos SSE en vivo." },
+          { name: "FastAPI + Ollama", role: "Runs the bounded optimization demonstration and serves a local model.", roleEs: "Ejecuta la optimización demostrativa con límites y sirve un modelo local." },
+          { name: "Qwen2.5 1.5B Instruct", role: "Open-weight model bundled with the container; no external model API or key.", roleEs: "Modelo de pesos abiertos incluido en el contenedor; no necesita API externa ni clave." },
+          { name: "GHCR / Docker", role: "Single container image with the UI, API, Ollama runtime, and model weights.", roleEs: "Imagen única con la interfaz, API, runtime Ollama y pesos del modelo." }
         ],
-        sizing: "Single container listening on port 8080. No external model or database is required.",
-        sizingEs: "Un contenedor escuchando en el puerto 8080. No requiere modelos externos ni base de datos.",
+        sizing: "Single CPU container listening on port 8080. The image bundles Qwen2.5 1.5B Instruct and requires sufficient memory for local inference; no external model API or database is required.",
+        sizingEs: "Un contenedor CPU que escucha en el puerto 8080. La imagen incluye Qwen2.5 1.5B Instruct y requiere memoria suficiente para inferencia local; no necesita API de modelos externa ni base de datos.",
         design: [
-          "Stateless by design; all scenario traces are public data baked into the image.",
-          "The Live mode streams staged evaluation events; it does not call an LLM or run the original Harness² optimizer."
+          "Stateless; the model weights and public cached examples are bundled in the image.",
+          "Live mode runs a bounded demonstration loop using a single local model for generation and judging.",
+          "The probe variation retains the user's task context; no tools or external data sources are invoked."
         ],
         designEs: [
-          "Diseñado sin estado; las trazas son datos públicos incluidos en la imagen.",
-          "El modo Live transmite etapas de evaluación; no invoca un LLM ni ejecuta el optimizador Harness² original."
+          "Sin estado; los pesos y ejemplos públicos están incluidos en la imagen.",
+          "El modo Live ejecuta un ciclo demostrativo limitado usando un modelo local para generar y evaluar.",
+          "La variación de prueba conserva el contexto de la tarea; no se invocan herramientas ni fuentes externas."
         ],
         limitations: [
-          "Scores and outputs are illustrative precomputed traces, not live model evaluations.",
-          "Custom prompts select a domain trace; they do not trigger inference."
+          "Same-model judge scores are subjective estimates and can be self-biased; they are not objective benchmark results.",
+          "This is an educational demonstration, not the original Google Harness² implementation or a validated agent optimizer.",
+          "The runtime limits each run to two iterations, a configurable token budget, one concurrent run, and three runs per minute per client IP."
         ],
         limitationsEs: [
-          "Las puntuaciones y salidas son trazas ilustrativas precalculadas, no evaluaciones de modelos en vivo.",
-          "Los prompts personalizados seleccionan una traza por dominio; no ejecutan inferencia."
+          "Las puntuaciones del juez del mismo modelo son estimaciones subjetivas y pueden tener sesgos; no son resultados objetivos de benchmark.",
+          "Es una demostración educativa, no la implementación original de Google Harness² ni un optimizador de agentes validado.",
+          "El runtime limita cada ejecución a dos iteraciones, un presupuesto de tokens configurable, una ejecución simultánea y tres ejecuciones por minuto por IP."
         ],
         links: { repo: "https://github.com/alulema/harness-playground" },
         lang: "auto"

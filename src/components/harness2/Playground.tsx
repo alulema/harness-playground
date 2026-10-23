@@ -1,11 +1,11 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ArrowUpRight, Bolt, Code2, RotateCcw, Sparkles } from 'lucide-react';
 import { cachedRuns } from './cached';
 import { useHarnessStream } from './useHarnessStream';
 import DiffViewer from './DiffViewer';
 import LiveExecutionFlow from './LiveExecutionFlow';
 import MetricsChart from './MetricsChart';
-import TaskSelector from './TaskSelector';
+import ModelAndDomainSelector from './ModelAndDomainSelector';
 import type { Domain, Mode } from './types';
 
 const firstRun = cachedRuns[0];
@@ -14,8 +14,19 @@ export default function Playground() {
   const [domain, setDomain] = useState<Domain>(firstRun.domain);
   const [scenarioId, setScenarioId] = useState(firstRun.id);
   const [prompt, setPrompt] = useState(firstRun.prompt);
+  const [model, setModel] = useState('');
+  const [maxIterations, setMaxIterations] = useState(1);
+  const [tokenBudget, setTokenBudget] = useState(8192);
   const [mode, setMode] = useState<Mode>('live');
   const runState = useHarnessStream();
+  useEffect(() => {
+    let active = true;
+    runState.loadModels().then((available) => {
+      if (!active || !available.length) return;
+      setModel((current) => current || available.find((item) => item.bundled)?.id || available[0].id);
+    });
+    return () => { active = false; };
+  }, [runState.loadModels]);
   const selectedRun = useMemo(
     () => cachedRuns.find((run) => run.id === scenarioId) ?? cachedRuns.find((run) => run.domain === domain)!,
     [domain, scenarioId],
@@ -23,7 +34,7 @@ export default function Playground() {
 
   async function startRun() {
     if (!prompt.trim()) return;
-    await runState.run({ scenarioId, domain, prompt: prompt.trim() }, domain, mode);
+    await runState.run({ scenarioId, domain, prompt: prompt.trim(), model, maxIterations, tokenBudget }, mode);
   }
 
   return (
@@ -51,27 +62,36 @@ export default function Playground() {
         <div className="mode-switch" aria-label="Execution mode">
           {(['live', 'cached'] as Mode[]).map((item) => (
             <button aria-pressed={mode === item} className={`mode-button ${mode === item ? 'mode-selected' : ''}`} disabled={runState.isRunning} key={item} onClick={() => setMode(item)} type="button">
-              {item === 'live' ? <Bolt size={12} /> : <RotateCcw size={12} />}{item === 'live' ? 'Live stream' : 'Cached replay'}
+              {item === 'live' ? <Bolt size={12} /> : <RotateCcw size={12} />}{item === 'live' ? 'Live · local model' : 'Cached example'}
             </button>
           ))}
         </div>
       </div>
-      <TaskSelector
+      <ModelAndDomainSelector
         domain={domain}
         scenarioId={scenarioId}
         prompt={prompt}
+        model={model}
+        models={runState.models}
+        maxIterations={maxIterations}
+        tokenBudget={tokenBudget}
         disabled={runState.isRunning}
         onDomain={setDomain}
         onScenario={setScenarioId}
         onPrompt={setPrompt}
+        onModel={setModel}
+        onIterations={setMaxIterations}
+        onTokenBudget={setTokenBudget}
       />
       <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="muted min-h-5 text-xs">
-          {runState.message ?? (mode === 'live'
-            ? 'Live mode streams a demonstration trace; no external model is called.'
-            : 'Cached mode replays a precomputed evaluation trace.')}
+          {runState.error ?? runState.message ?? (mode === 'live'
+            ? runState.models.length
+              ? 'Runs locally through Ollama. The selected model also acts as a comparative judge.'
+              : 'Ollama is unavailable. Start Ollama locally or use the cached example.'
+            : 'Cached mode replays a precomputed example; it does not run inference.')}
         </p>
-        <button className="button-primary" disabled={runState.isRunning || !prompt.trim()} onClick={startRun} type="button">
+        <button className="button-primary" disabled={runState.isRunning || !prompt.trim() || (mode === 'live' && !model)} onClick={startRun} type="button">
           {runState.isRunning ? <span className="spinner" /> : <Sparkles size={15} />}
           {runState.isRunning ? 'Optimizing…' : 'Run Harness² optimization'}
           {!runState.isRunning && <ArrowUpRight size={14} />}
@@ -83,8 +103,13 @@ export default function Playground() {
         {runState.result && <button className="ml-auto text-[11px] transition hover:text-[var(--color-text,#fff)]" onClick={runState.reset} type="button">Clear run</button>}
       </div>
       <div className="grid gap-4 lg:grid-cols-[1.25fr_0.75fr]">
-        <LiveExecutionFlow stage={runState.stage} steps={runState.steps} isRunning={runState.isRunning} />
-        <MetricsChart steps={runState.steps} />
+        <LiveExecutionFlow
+          stage={runState.stage}
+          steps={runState.steps}
+          isRunning={runState.isRunning}
+          modelTokenPreview={runState.modelTokenPreview}
+        />
+        <MetricsChart steps={runState.steps} metrics={runState.metrics} />
       </div>
 
       <div className="muted mb-4 mt-9 flex items-center gap-2 text-xs">
@@ -94,7 +119,11 @@ export default function Playground() {
       <DiffViewer result={runState.result} />
 
       <footer className="muted mt-8 flex flex-col items-center justify-between gap-3 border-t border-[var(--demo-border)] pt-5 text-[11px] sm:flex-row">
-        <p>{selectedRun.title} · example trace</p>
+        <p>
+          {runState.transport === 'cached'
+            ? `${mode === 'live' ? 'Cached fallback' : 'Cached example'} · ${selectedRun.title}`
+            : 'Live inference · local open-weight model'}
+        </p>
         <a className="inline-flex items-center gap-1.5 transition hover:text-[var(--color-text,#fff)]" href="https://github.com/alulema/harness-playground" rel="noreferrer" target="_blank">
           <Code2 size={13} />Source <ArrowUpRight size={11} />
         </a>

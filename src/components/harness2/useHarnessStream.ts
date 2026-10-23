@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import { findCachedRun } from './cached';
-import type { CachedRun, Domain, Mode, RunResult, Stage, StepEvent } from './types';
+import type { CachedRun, Domain, ModelOption, RunMetrics, RunResult, Stage, StepEvent } from './types';
 
 interface StreamState {
   stage: Stage;
@@ -9,17 +9,33 @@ interface StreamState {
   isRunning: boolean;
   transport: 'live' | 'cached' | null;
   message: string | null;
-}
-
-interface StreamPayload extends Partial<StepEvent>, Partial<RunResult> {
-  result?: Partial<RunResult>;
+  error: string | null;
+  metrics: RunMetrics;
+  modelTokenPreview: string;
+  model: string;
 }
 
 interface HarnessRequest {
   scenarioId: string;
   domain: Domain;
   prompt: string;
+  model: string;
+  maxIterations: number;
+  tokenBudget: number;
 }
+
+interface SseMessage {
+  event: string;
+  data: Record<string, unknown>;
+}
+
+const emptyMetrics: RunMetrics = {
+  promptTokens: 0,
+  completionTokens: 0,
+  totalTokens: 0,
+  latencyMs: 0,
+  iterations: 0,
+};
 
 const initialState: StreamState = {
   stage: 'idle',
@@ -28,15 +44,15 @@ const initialState: StreamState = {
   isRunning: false,
   transport: null,
   message: null,
+  error: null,
+  metrics: emptyMetrics,
+  modelTokenPreview: '',
+  model: '',
 };
 
 const wait = (milliseconds: number) => new Promise((resolve) => window.setTimeout(resolve, milliseconds));
 
-function isStage(value: unknown): value is StepEvent['stage'] {
-  return value === 'propose' || value === 'probe' || value === 'compose';
-}
-
-function parseBlock(block: string): { event: string; data: string } | null {
+function parseBlock(block: string): SseMessage | null {
   let event = 'message';
   const data: string[] = [];
   for (const line of block.split(/\r?\n/)) {
@@ -47,122 +63,198 @@ function parseBlock(block: string): { event: string; data: string } | null {
     if (field === 'event') event = value;
     if (field === 'data') data.push(value);
   }
-  return data.length ? { event, data: data.join('\n') } : null;
+  if (!data.length) return null;
+  try {
+    return { event, data: JSON.parse(data.join('\n')) as Record<string, unknown> };
+  } catch {
+    throw new Error('The optimization stream sent invalid JSON.');
+  }
 }
 
-function toStep(event: string, payload: StreamPayload): StepEvent | null {
-  const stage = isStage(payload.stage) ? payload.stage : isStage(event) ? event : null;
-  if (!stage) return null;
-  const component = payload.component;
+function asNumber(value: unknown, fallback = 0): number {
+  return typeof value === 'number' && Number.isFinite(value) ? value : fallback;
+}
+
+function toStep(event: string, data: Record<string, unknown>): StepEvent | null {
+  if (!['baseline', 'propose', 'probe', 'compose'].includes(event)) return null;
+  const stage = event as StepEvent['stage'];
+  const component = data.component;
+  const componentName = component === 'memory' || component === 'tool_guidance' || component === 'system_prompt'
+    ? component
+    : undefined;
+  const instruction = typeof data.instruction === 'string' ? data.instruction : '';
+  const rationale = typeof data.rationale === 'string' ? data.rationale : '';
+  const status = typeof data.status === 'string' ? data.status : '';
+
   return {
-    iteration: Number.isFinite(payload.iteration) ? Number(payload.iteration) : 1,
+    iteration: asNumber(data.iteration),
     stage,
-    component: component === 'memory' || component === 'tool_guidance' ? component : 'system_prompt',
-    proposal: typeof payload.proposal === 'string' ? payload.proposal : 'Harness update received.',
-    probeScore: Number.isFinite(payload.probeScore) ? Number(payload.probeScore) : 0,
-    accepted: typeof payload.accepted === 'boolean' ? payload.accepted : false,
-    deltaScore: Number.isFinite(payload.deltaScore) ? Number(payload.deltaScore) : 0,
+    component: componentName,
+    proposal: instruction || rationale || status || (stage === 'baseline' ? 'Generating baseline response' : 'Working…'),
+    probeScore: asNumber(data.candidateScore),
+    baseScore: asNumber(data.baseScore),
+    candidateScore: asNumber(data.candidateScore),
+    deltaScore: asNumber(data.deltaScore),
+    accepted: typeof data.accepted === 'boolean' ? data.accepted : undefined,
+    rationale: rationale || undefined,
+    status: status || undefined,
   };
 }
 
-function normalizeResult(
-  payload: Partial<RunResult>,
-  request: HarnessRequest,
-  steps: StepEvent[],
-  fallback: CachedRun,
-): RunResult {
+function cachedResult(cached: CachedRun, steps: StepEvent[], model: string): RunResult {
   return {
-    taskId: payload.taskId ?? fallback.taskId,
-    domain: payload.domain ?? request.domain,
-    baseOutput: payload.baseOutput ?? fallback.baseOutput,
-    optimizedOutput: payload.optimizedOutput ?? fallback.optimizedOutput,
-    totalImprovement: Number.isFinite(payload.totalImprovement)
-      ? Number(payload.totalImprovement)
-      : fallback.totalImprovement,
+    taskId: cached.taskId,
+    domain: cached.domain,
+    model,
+    baseOutput: cached.baseOutput,
+    optimizedOutput: cached.optimizedOutput,
+    totalImprovement: cached.totalImprovement,
+    harness: [],
+    acceptedIterations: 0,
+    metrics: emptyMetrics,
+    evaluation: 'precomputed-demo-trace',
     steps,
   };
 }
 
 export function useHarnessStream() {
   const [state, setState] = useState<StreamState>(initialState);
+  const [models, setModels] = useState<ModelOption[]>([]);
+  const [defaultModel, setDefaultModel] = useState('');
   const controller = useRef<AbortController | null>(null);
 
-  const replay = useCallback(async (request: HarnessRequest, cached: CachedRun, message: string | null) => {
+  const loadModels = useCallback(async () => {
+    try {
+      const response = await fetch('/api/v1/models');
+      if (!response.ok) throw new Error(`Model service returned HTTP ${response.status}.`);
+      const payload = await response.json() as { models: ModelOption[]; defaultModel?: string };
+      setModels(payload.models);
+      setDefaultModel(payload.defaultModel ?? payload.models[0]?.id ?? '');
+      return payload.models;
+    } catch {
+      setModels([]);
+      setDefaultModel('');
+      return [];
+    }
+  }, []);
+
+  const replay = useCallback(async (cached: CachedRun, model: string, message: string, signal?: AbortSignal) => {
     const steps: StepEvent[] = [];
     for (const step of cached.steps) {
       await wait(360);
+      if (signal?.aborted) return;
       steps.push(step);
       setState((current) => ({ ...current, stage: step.stage, steps: [...steps], transport: 'cached' }));
     }
+    if (signal?.aborted) return;
     setState((current) => ({
       ...current,
       stage: 'completed',
       steps,
-      result: normalizeResult(cached, request, steps, cached),
+      result: cachedResult(cached, steps, model),
       isRunning: false,
       transport: 'cached',
       message,
+      error: null,
     }));
   }, []);
 
-  const run = useCallback(async (request: HarnessRequest, domain: Domain, mode: Mode) => {
+  const run = useCallback(async (request: HarnessRequest, mode: 'live' | 'cached') => {
     controller.current?.abort();
-    const cached = findCachedRun(request.scenarioId, domain);
-    setState({ ...initialState, isRunning: true, transport: mode === 'cached' ? 'cached' : null });
+    const activeController = new AbortController();
+    controller.current = activeController;
+    const cached = findCachedRun(request.scenarioId, request.domain);
+    setState({
+      ...initialState,
+      stage: 'baseline',
+      isRunning: true,
+      transport: mode === 'cached' ? 'cached' : null,
+      model: request.model,
+      metrics: { ...emptyMetrics },
+    });
 
     if (mode === 'cached') {
-      await replay(request, cached, null);
+      await replay(cached, request.model, 'Replaying a precomputed trace; no model was called.', activeController.signal);
+      if (controller.current === activeController) controller.current = null;
       return;
     }
 
-    const activeController = new AbortController();
-    controller.current = activeController;
-    let timer: number | undefined;
+    let receivedEvent = false;
     const steps: StepEvent[] = [];
-    let finalResult: Partial<RunResult> | null = null;
-    let sawDone = false;
+    let metrics = { ...emptyMetrics };
+    const streamUrl = '/api/v1/stream';
+
     try {
-      const endpoint = import.meta.env.PUBLIC_HARNESS_STREAM_URL || '/api/harness/stream';
-      timer = window.setTimeout(() => activeController.abort(), 5_000);
-      const response = await fetch(endpoint, {
+      const response = await fetch(streamUrl, {
         method: 'POST',
         headers: { Accept: 'text/event-stream', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...request, mode }),
+        body: JSON.stringify({
+          model: request.model,
+          domain: request.domain,
+          prompt: request.prompt,
+          maxIterations: request.maxIterations,
+          tokenBudget: request.tokenBudget,
+        }),
         signal: activeController.signal,
       });
-      if (timer !== undefined) window.clearTimeout(timer);
-      timer = undefined;
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      if (!response.body) throw new Error('SSE response has no readable body');
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({})) as { detail?: string };
+        throw new Error(body.detail ?? `HTTP ${response.status}`);
+      }
+      if (!response.body) throw new Error('The SSE response has no readable body.');
 
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let buffer = '';
+      const finalData: { value?: Record<string, unknown> } = {};
+      let streamError: string | null = null;
       const consume = (block: string) => {
         const message = parseBlock(block);
         if (!message) return;
-        let payload: StreamPayload;
-        try {
-          payload = JSON.parse(message.data) as StreamPayload;
-        } catch {
-          throw new Error('SSE event contains invalid JSON');
+        receivedEvent = true;
+        const { event, data } = message;
+
+        if (event === 'model_metrics') {
+          metrics = {
+            promptTokens: metrics.promptTokens + asNumber(data.promptTokens),
+            completionTokens: metrics.completionTokens + asNumber(data.completionTokens),
+            totalTokens: asNumber(data.totalTokens, metrics.totalTokens + asNumber(data.promptTokens) + asNumber(data.completionTokens)),
+            latencyMs: metrics.latencyMs + asNumber(data.latencyMs),
+            iterations: metrics.iterations,
+          };
+          setState((current) => ({ ...current, metrics: { ...metrics } }));
+        } else if (event === 'model_token') {
+          const token = typeof data.token === 'string' ? data.token : '';
+          setState((current) => ({
+            ...current,
+            modelTokenPreview: `${current.modelTokenPreview}${token}`.slice(-320),
+          }));
+        } else if (
+          (event === 'baseline' && data.status === 'generating') ||
+          (event === 'propose' && data.status === 'generating') ||
+          (event === 'probe' && (data.status === 'generating' || data.status === 'judging'))
+        ) {
+          setState((current) => ({ ...current, modelTokenPreview: '' }));
+        } else if (event === 'run_started') {
+          setState((current) => ({ ...current, model: String(data.model ?? request.model) }));
+        } else if (event === 'error') {
+          streamError = typeof data.message === 'string' ? data.message : 'Optimization failed.';
+        } else if (event === 'completed') {
+          finalData.value = data;
         }
-        const step = toStep(message.event, payload);
+
+        const step = toStep(event, data);
         if (step) {
           steps.push(step);
+          if (step.stage === 'probe' && step.status === 'complete') {
+            metrics.iterations = Math.max(metrics.iterations, step.iteration);
+          }
           setState((current) => ({
             ...current,
             stage: step.stage,
             steps: [...steps],
-            transport: 'live',
+            metrics: { ...metrics },
           }));
-        }
-        if (message.event === 'output') {
-          finalResult = payload.result ?? payload;
-        }
-        if (message.event === 'completed') {
-          finalResult = payload.result ?? payload;
-          sawDone = true;
         }
       };
 
@@ -175,29 +267,53 @@ export function useHarnessStream() {
         if (done) break;
       }
       if (buffer.trim()) consume(buffer);
-      if (!sawDone) throw new Error('SSE stream closed before the completed event');
 
+      if (streamError) throw new Error(streamError);
+      const completion = finalData.value;
+      if (!completion) throw new Error('The optimization stream ended before completion.');
+      const finalMetrics = (completion.metrics ?? metrics) as RunMetrics;
+      const result: RunResult = {
+        taskId: `live-${Date.now()}`,
+        domain: request.domain,
+        model: String(completion.model ?? request.model),
+        baseOutput: String(completion.baseOutput ?? ''),
+        optimizedOutput: String(completion.optimizedOutput ?? ''),
+        totalImprovement: asNumber(completion.totalImprovement),
+        harness: Array.isArray(completion.harness) ? completion.harness.filter((item): item is string => typeof item === 'string') : [],
+        acceptedIterations: asNumber(completion.acceptedIterations),
+        metrics: finalMetrics,
+        evaluation: String(completion.evaluation ?? 'same-model-judge'),
+        steps,
+      };
       setState((current) => ({
         ...current,
         stage: 'completed',
         steps,
-        result: normalizeResult(finalResult ?? {}, request, steps, cached),
+        result,
         isRunning: false,
         transport: 'live',
-        message: null,
+        message: `Evaluated live with ${result.model}; judge scores are model estimates, not objective benchmarks.`,
+        metrics: finalMetrics,
       }));
     } catch (error) {
-      if (activeController.signal.aborted && !steps.length) {
-        await replay(request, cached, 'Live stream unavailable; replaying the cached evaluation trace.');
-      } else {
+      if (activeController.signal.aborted) return;
+      if (!receivedEvent && error instanceof Error && !activeController.signal.aborted) {
         await replay(
-          request,
           cached,
-          `Live stream interrupted${error instanceof Error ? ` (${error.message})` : ''}; replayed the cached trace.`,
+          request.model,
+          `Live model service unavailable (${error.message}); replayed the cached example. Choose a cached replay for examples.`,
         );
+      } else {
+        const message = error instanceof Error ? error.message : 'Optimization failed.';
+        setState((current) => ({
+          ...current,
+          stage: 'error',
+          isRunning: false,
+          error: message,
+          metrics,
+        }));
       }
     } finally {
-      if (timer !== undefined) window.clearTimeout(timer);
       if (controller.current === activeController) controller.current = null;
     }
   }, [replay]);
@@ -208,5 +324,5 @@ export function useHarnessStream() {
     setState(initialState);
   }, []);
 
-  return { ...state, run, reset };
+  return { ...state, models, defaultModel, loadModels, run, reset };
 }
