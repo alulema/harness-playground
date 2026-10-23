@@ -16,7 +16,7 @@ Este demo se integra en `alulema/personal-website` como una imagen pública en G
 | Secretos de provisión | Ninguno |
 | Recursos extra / sidecars | Ninguno |
 
-La imagen nueva integra Astro/React, FastAPI, Ollama y los pesos abiertos de `qwen2.5:1.5b-instruct`. Es autocontenida y no requiere una API externa. Los pesos ocupan unos 986 MB; la imagen construida localmente ocupa unos 1,2 GB (el tamaño publicado puede variar). Reserva memoria suficiente para inferencia local (se recomiendan al menos 4 GiB).
+La imagen nueva integra Astro/React, FastAPI, Ollama y los pesos abiertos de `qwen2.5:1.5b-instruct` (predeterminado) y `gemma2:2b` (seleccionable). Es autocontenida y no requiere una API externa. Los pesos ocupan unos 986 MB + 1,6 GB; la imagen ocupará unos 2,8 GB (el tamaño publicado puede variar). Reserva memoria suficiente para inferencia local (se recomiendan al menos 4 GiB).
 
 ## Tareas de integración en personal-website
 

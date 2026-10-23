@@ -17,6 +17,11 @@ from .router import ModelRouter, ModelUnavailableError
 
 BASE_DIR = Path(__file__).resolve().parents[2]
 DEFAULT_MODEL = os.getenv("DEFAULT_MODEL", "qwen2.5:1.5b-instruct")
+BUNDLED_MODELS = {
+    name.strip()
+    for name in os.getenv("BUNDLED_MODELS", "qwen2.5:1.5b-instruct,gemma2:2b").split(",")
+    if name.strip()
+}
 MAX_TOKEN_BUDGET = 8192
 MAX_ITERATIONS = 2
 RATE_LIMIT_REQUESTS = 3
@@ -105,7 +110,7 @@ async def list_models() -> dict[str, Any]:
         raise HTTPException(status_code=503, detail=str(error)) from error
 
     for model in models:
-        model["bundled"] = model["id"] == DEFAULT_MODEL
+        model["bundled"] = model["id"] in BUNDLED_MODELS
         model["licenseNote"] = "Open-weight model served locally by Ollama."
     return {"models": models, "defaultModel": DEFAULT_MODEL}
 

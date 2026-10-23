@@ -14,7 +14,8 @@ RUN set -eu; \
       sleep 2; \
     done; \
     if [ "$ready" -ne 1 ]; then cat /tmp/ollama.log; exit 1; fi; \
-    ollama pull qwen2.5:1.5b-instruct
+    ollama pull qwen2.5:1.5b-instruct; \
+    ollama pull gemma2:2b
 
 FROM node:22-alpine AS frontend
 WORKDIR /build

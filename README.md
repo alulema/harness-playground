@@ -6,7 +6,7 @@ This is an educational implementation inspired by the Harness² pattern, not Goo
 
 ## Run with Docker
 
-The image contains the Astro/React UI, FastAPI service, Ollama runtime, and `qwen2.5:1.5b-instruct` model weights. It runs on CPU and requires no model API key or external inference service.
+The image contains the Astro/React UI, FastAPI service, Ollama runtime, and the `qwen2.5:1.5b-instruct` (default) and `gemma2:2b` model weights. It runs on CPU and requires no model API key or external inference service.
 
 ```sh
 docker build -t harness2-playground .
@@ -41,6 +41,7 @@ Pull the default model and start Ollama:
 
 ```sh
 ollama pull qwen2.5:1.5b-instruct
+ollama pull gemma2:2b   # optional second model
 ollama serve
 ```
 
@@ -67,7 +68,7 @@ Open the Astro URL shown in the terminal. Astro proxies `/api` requests to FastA
 - Maximum of two optimization iterations and 8,192 tokens per run; the UI offers 2,048, 4,096, or 8,192-token budgets.
 - One iteration is selected by default to keep live runs shorter; two iterations are available when a deeper run is preferred.
 - One concurrent run and three runs per minute per client IP.
-- The bundled default is Qwen2.5 1.5B Instruct. Live runs make multiple model calls; latency depends on available CPU and memory.
+- The bundled default is Qwen2.5 1.5B Instruct; Gemma 2 2B is also bundled and selectable (the model list is read from Ollama, and `BUNDLED_MODELS` marks bundled entries). Live runs make multiple model calls; latency depends on available CPU and memory.
 - Each probe includes the original task context plus a domain-specific variation. No external tools or data sources are called.
 - The same model proposes instructions, generates responses, and judges current versus candidate outputs. A higher model-judge score is not proof of better real-world performance.
 - Cached mode is a precomputed illustrative trace. If the live API is unavailable before an SSE event arrives, the UI replays the cached example and labels it accordingly.
