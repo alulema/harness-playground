@@ -73,7 +73,64 @@ class RejectingRouter(FakeRouter):
             yield item
 
 
+class SchemaEchoRouter(FakeRouter):
+    def __init__(self) -> None:
+        super().__init__()
+        self.proposals = 0
+
+    async def stream_chat(self, model, messages, *, max_tokens, json_mode=False):
+        if "Improve an AI agent" in messages[-1]["content"] and self.proposals == 0:
+            self.proposals += 1
+            self.requests.append({"model": model, "messages": messages, "max_tokens": max_tokens, "json_mode": json_mode})
+            yield {"token": json.dumps({"type": "object", "properties": {"component": {"type": "string"}}})}
+            yield {"done": True, "promptTokens": 10, "completionTokens": 5, "latencyMs": 20}
+            return
+        async for item in super().stream_chat(model, messages, max_tokens=max_tokens, json_mode=json_mode):
+            yield item
+
+
+class TruncatedJudgeRouter(FakeRouter):
+    def __init__(self) -> None:
+        super().__init__()
+        self.judgments = 0
+
+    async def stream_chat(self, model, messages, *, max_tokens, json_mode=False):
+        if "You are evaluating" in messages[-1]["content"] and self.judgments == 0:
+            self.judgments += 1
+            self.requests.append({"model": model, "messages": messages, "max_tokens": max_tokens, "json_mode": json_mode})
+            yield {"token": '{"base_scores":[60,60],"candidate_scores":[80,80],"rationale":"incomplete'}
+            yield {"done": True, "promptTokens": 10, "completionTokens": 5, "latencyMs": 20}
+            return
+        async for item in super().stream_chat(model, messages, max_tokens=max_tokens, json_mode=json_mode):
+            yield item
+
+
 class HarnessEngineTests(unittest.IsolatedAsyncioTestCase):
+    async def test_truncated_judgment_retries_with_specific_feedback(self) -> None:
+        router = TruncatedJudgeRouter()
+        engine = HarnessEngine(router, token_budget=8192)
+        events = [event async for event in engine.run(
+            model="test", domain="WorkBuddy", prompt="Plan a trip.", max_iterations=1
+        )]
+        self.assertTrue(any(event["event"] == "judge_retry" for event in events))
+        self.assertTrue(any(event["event"] == "completed" for event in events))
+        judgments = [r for r in router.requests if "You are evaluating" in r["messages"][-1]["content"]]
+        self.assertEqual(len(judgments), 2)
+        self.assertEqual(judgments[1]["max_tokens"], 160)
+        self.assertIn("Your previous judgment was invalid", judgments[1]["messages"][-1]["content"])
+
+    async def test_schema_echo_retries_with_specific_feedback(self) -> None:
+        router = SchemaEchoRouter()
+        engine = HarnessEngine(router, token_budget=8192)
+        events = [event async for event in engine.run(
+            model="test", domain="WorkBuddy", prompt="Plan a trip.", max_iterations=1
+        )]
+        self.assertTrue(any(event["event"] == "proposal_retry" for event in events))
+        self.assertTrue(any(event["event"] == "completed" for event in events))
+        proposals = [request for request in router.requests if "Improve an AI agent" in request["messages"][-1]["content"]]
+        self.assertEqual(len(proposals), 2)
+        self.assertIn("Your previous response was invalid", proposals[1]["messages"][-1]["content"])
+
     async def test_probes_keep_the_user_task_context_and_compose_improved_rule(self) -> None:
         router = FakeRouter()
         engine = HarnessEngine(router, token_budget=8192)

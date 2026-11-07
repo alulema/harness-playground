@@ -1,0 +1,26 @@
+[
+  {
+    "id": "employment",
+    "prompt": "How might employment change if AGI is adopted gradually versus rapidly? Explain assumptions and uncertainty without claiming either future is certain."
+  },
+  {
+    "id": "science",
+    "prompt": "Analyze potential benefits and risks of AGI for scientific research. Explain the assumptions behind each possibility and distinguish current facts from speculation."
+  },
+  {
+    "id": "concentration",
+    "prompt": "How might the social impact of AGI differ if access is concentrated in a few organizations versus widely distributed? Explain the assumptions and uncertainties behind your analysis."
+  },
+  {
+    "id": "revision",
+    "prompt": "What evidence or developments could change an assessment of AGI's future effects on humanity? Give conditional examples, explain why they matter, and avoid asserting an arrival date."
+  },
+  {
+    "id": "evidence",
+    "prompt": "What is known and unknown about the future impact of AGI on humanity? Distinguish currently verifiable facts from hypotheses and explain reasons for the distinction without inventing citations."
+  },
+  {
+    "id": "capacity-control",
+    "prompt": "A fictional research team has 12 independent safety checks. Each check takes 45 minutes. Two engineers have exactly 3 hours each today. Assuming no overhead, how many checks can they complete and how many remain? Explain your calculation and one limitation."
+  }
+]

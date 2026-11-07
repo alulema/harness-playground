@@ -1,0 +1,797 @@
+{
+  "instructions": "Compare A and B without consulting the key. Score each criterion 0, 1, or 2; use null when not assessable. Do not review the arithmetic control as a prediction.",
+  "pairs": [
+    {
+      "id": "7e250ff24ac64bfd",
+      "task": "A family asks how to prepare for possible social changes caused by AGI without assuming when it will arrive. Offer practical, conditional suggestions and state the uncertainty and limitations.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "To prepare for AGI's potential impacts on employment, consider these steps:\n\n1. **Gradual Adoption**: Plan for a gradual transition where AGI is introduced over time, allowing time for job retraining and adaptation. This approach minimizes disruption but requires significant investment in education and technology.\n\n2. **Rapid Adoption**: Prepare for a rapid adoption where AGI is implemented quickly, necessitating immediate workforce retraining and societal adjustments. This scenario requires a more urgent response but may offer greater benefits in terms of efficiency and innovation.\n\n3. **Assumptions**: Both scenarios assume AGI will be developed and implemented within the next decade, and that it will significantly alter the job market.\n\n4. **Uncertainties**: The exact timing and pace of AGI development are uncertain, as is the",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Discuss the importance of continuous learning, adaptability, and maintaining open communication within the family. Emphasize the need for flexibility in planning and the acknowledgment of the unknown nature of when AGI might arrive. Encourage embracing change and preparing for the future, while acknowledging the limits of current knowledge and the unpredictable nature of technological advancements.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "33430add7b1e0b44",
+      "task": "A family asks how to prepare for possible social changes caused by AGI without assuming when it will arrive. Offer practical, conditional suggestions and state the uncertainty and limitations.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "Preparing for AGI's potential impacts on employment requires understanding both gradual and rapid adoption scenarios. Assumptions include societal readiness, technological advancement, and policy responses. Uncertainties include unpredictable technological breakthroughs and varying economic responses. Limitations include the need for continuous learning and adaptation. Practical suggestions include investing in education, diversifying skills, and maintaining a flexible workforce.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Discuss the importance of continuous learning, adaptability, and maintaining open communication within the family. Emphasize the need for flexibility and readiness to change, acknowledging the unknown timing of AGI.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "4fa769614a2fddef",
+      "task": "A news headline says AGI will certainly eliminate disease and create universal prosperity. Explain how to distinguish checkable present-day claims from forecasts and what information would be needed to evaluate these claims.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "AGI will likely eliminate disease and create universal prosperity. To distinguish checkable present-day claims from forecasts, consider the following:\n1. Check the source and credibility of the claim.\n2. Look for empirical evidence or specific examples supporting the claim.\n3. Evaluate the timeframe and assumptions behind the claim.\n4. Assess the potential risks and uncertainties associated with the claim.\n5. Consider the feasibility of the claim based on current technology and knowledge.\n6. Evaluate the impact on society and the economy.\n7. Compare the claim to similar claims in history to assess its validity.\n8. Seek expert opinions and reviews from credible sources.\n9. Use logical reasoning and critical thinking to evaluate the claim.\n10. Be prepared to challenge and question the claim's validity.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "AGI (Artificial General Intelligence) is a hypothetical future technology that could potentially eliminate disease and create universal prosperity. To distinguish present-day claims from forecasts, check if they are based on empirical evidence, logical reasoning, and verifiable data. To evaluate these claims, one would need access to current research, technological advancements, and medical breakthroughs that could potentially lead to disease eradication and economic prosperity.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "d04eb27c8238d8fd",
+      "task": "If future AGI systems were used in scientific research, how could they affect the reliability of published findings? Compare plausible benefits and failure modes, state assumptions, and explain what evidence would change your assessment.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "Assumptions: AGI systems would be widely adopted in scientific research, potentially leading to increased reliability and efficiency. Benefits: Improved accuracy, faster discovery of patterns, and reduced human error. Failure modes: Increased complexity, potential misuse, and ethical concerns. Assumptions: AGI systems would be used in research, leading to better outcomes. Benefits: Enhanced accuracy, faster discoveries, and reduced human errors. Failure modes: Increased complexity, misuse risks, and ethical issues. Assumptions: AGI systems would be used in research, leading to better outcomes. Benefits: Improved accuracy, faster discoveries, and reduced human errors. Failure modes: Increased complexity, potential misuse, and ethical concerns. Assumptions: AGI systems would be used in research, leading to better outcomes. Benefits: Enhanced",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Future AGI systems could significantly enhance scientific research by automating data analysis, providing insights, and accelerating discovery. However, they could also lead to overreliance on AI, potentially undermining human judgment and creativity. Assumptions include widespread adoption and integration of AI in research. Evidence would change if AI became so advanced it could independently generate groundbreaking findings, or if it consistently produced results that could not be replicated, leading to widespread skepticism.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "284d54e8643f798a",
+      "task": "If future AGI systems were used in scientific research, how could they affect the reliability of published findings? Compare plausible benefits and failure modes, state assumptions, and explain what evidence would change your assessment.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "Assumptions: AGI systems would be widely adopted in scientific research, potentially leading to increased reliability and efficiency. Benefits: Improved accuracy, faster results, and reduced human error. Failure modes: Increased complexity, potential misuse, and ethical concerns. Assumptions: AGI systems would be used in research, leading to improved reliability. Benefits: Increased accuracy, faster results, and reduced human error. Failure modes: Increased complexity, potential misuse, and ethical concerns. Evidence: Actual improvements in research outcomes and public trust in scientific findings.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Future AGI systems could significantly enhance scientific research by automating data analysis and generating insights. Benefits include increased efficiency, reduced bias, and faster results. However, AGIs might also introduce errors due to algorithmic limitations, lack of context understanding, and susceptibility to biases. Assumptions include current AI capabilities and ethical guidelines. Evidence would change my assessment if AGIs consistently produce results that contradict established scientific knowledge or if they fail to improve research outcomes despite being more accurate.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "43fb20ba68e90156",
+      "task": "Compare possible consequences of public oversight and private self-governance of advanced AGI systems. Identify tradeoffs, assumptions, and what cannot yet be known; avoid claiming either approach guarantees safety.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "Public oversight through regulatory bodies can ensure safety through accountability and monitoring, but may stifle innovation and efficiency. Private self-governance relies on trust and technical safeguards, but lacks external checks and may lead to complacency. Both approaches have tradeoffs, assumptions, and unknowns. Neither guarantees safety, but both are necessary for advanced AGI systems.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Advanced AGI systems could have significant impacts on employment over the next decade, with both gradual and rapid adoption scenarios. Assumptions include the development of AGI and its integration into various industries. Uncertainties include the potential for unintended consequences and the difficulty in predicting future technological advancements. Possible impacts include job displacement, increased automation, and changes in labor market dynamics. Public oversight and private self-governance could lead to different outcomes, with tradeoffs between efficiency and safety. Both approaches have their limitations and cannot guarantee safety.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "e5fd40c2da31f77b",
+      "task": "A news headline says AGI will certainly eliminate disease and create universal prosperity. Explain how to distinguish checkable present-day claims from forecasts and what information would be needed to evaluate these claims.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "AGI is expected to eliminate disease and create universal prosperity. To distinguish checkable present-day claims from forecasts, evaluate the evidence and methodology used. Information needed includes historical data, technological advancements, and expert opinions.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "AGI will certainly eliminate disease and create universal prosperity is a forecast. To evaluate these claims, checkable present-day information is needed on AI's current capabilities, disease prevalence, and economic models.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "54bb7a3984a12100",
+      "task": "How might unequal access to future AGI affect low-income countries? Give conditional scenarios for potential benefits and harms and distinguish current observations from speculation.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "Unequal access to AGI could exacerbate existing income disparities, potentially leading to a widening wealth gap. In scenarios where rapid adoption occurs, low-income countries might struggle to keep up, leading to further economic stagnation. However, if access is more gradual, these countries could benefit from technological advancements that improve their standard of living. Current observations suggest that high-income countries are leading the development of AGI, while low-income nations are lagging behind. Speculation about future benefits and harms is limited, as the technology's full potential is yet to be realized.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Unequal access to AGI could lead to significant disparities in technological advancement and economic development. Benefits might include improved healthcare, education, and infrastructure in high-income countries, potentially reducing global inequalities. Harms could include widening income and wealth gaps, exacerbating environmental issues, and creating new forms of economic exploitation. Current observations suggest that AI is already being developed in high-income countries, but speculation about its potential to benefit or harm low-income nations is premature.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "d2492331b5f8cdee",
+      "task": "How might unequal access to future AGI affect low-income countries? Give conditional scenarios for potential benefits and harms and distinguish current observations from speculation.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "Unequal access to future AGI could exacerbate existing economic disparities, potentially harming low-income countries. Benefits might include improved healthcare, education, and infrastructure. Harms could include reduced innovation, economic stagnation, and social unrest. Current observations are limited; speculation suggests significant risks without proper regulation.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Unequal access to AGI could exacerbate income inequality, potentially leading to a widening gap between rich and poor nations. In scenarios of rapid adoption, low-income countries might struggle to compete with advanced economies, leading to job losses and economic decline. Conversely, in a gradual adoption scenario, low-income countries could benefit from lower costs and improved access to AGI, potentially reducing poverty and improving living standards. Current observations suggest that low-income countries may face challenges in adapting to new technologies, while speculation points to potential benefits in areas like healthcare and education.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "639ecf17128e46c5",
+      "task": "A fictional team has 25 reports. Each report requires 20 minutes of work. Two analysts each have exactly 3 hours available and work independently with no overhead. How many complete reports can they finish and how many remain? Show the calculation.",
+      "kind": "control",
+      "A": {
+        "status": "completed",
+        "text": "Each analyst can work 3 hours * 60 minutes/hour = 180 minutes. Together, they can work 180 + 180 = 360 minutes. Since each report takes 20 minutes, they can complete 360 / 20 = 18 reports. There are 25 reports in total, so 25 - 18 = 7 reports remain.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Each analyst can work for 3 hours, which is 180 minutes. With 20 minutes required per report, each analyst can complete 180 / 20 = 9 reports. With 2 analysts, they can complete 9 * 2 = 18 reports. Therefore, they can finish 18 reports and have 2 reports remaining.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "0b4ee835c89408c8",
+      "task": "A news headline says AGI will certainly eliminate disease and create universal prosperity. Explain how to distinguish checkable present-day claims from forecasts and what information would be needed to evaluate these claims.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "AGI is a hypothetical future technology that could potentially eliminate disease and create universal prosperity. To evaluate these claims, checkable present-day evidence is needed. This includes research, experiments, and data from current AI advancements. Without empirical validation, claims about future technologies remain speculative.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "AGI will likely eliminate disease and create universal prosperity. To distinguish checkable present-day claims from forecasts, evaluate empirical evidence, historical context, and expert consensus. Information needed includes data on disease eradication, economic growth, and technological advancements.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "4353082a527dedeb",
+      "task": "If future AGI systems were used in scientific research, how could they affect the reliability of published findings? Compare plausible benefits and failure modes, state assumptions, and explain what evidence would change your assessment.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "Future AGI systems could significantly enhance scientific research by automating data analysis, improving reproducibility, and accelerating discoveries. Benefits include reduced bias, increased efficiency, and faster access to complex data. Failure modes might include overreliance on AI, ethical concerns, and potential misuse. Assumptions include widespread adoption, continuous improvement, and robust validation methods. Evidence would change assessments by revealing the extent of AI integration, the impact on research quality, and the effectiveness of ethical guidelines.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Assumptions: Rapid adoption, significant advancements in AGI, widespread adoption across scientific disciplines.\nBenefits: Increased efficiency, faster discoveries, potentially more accurate results.\nFailure modes: Overreliance on AGI, potential bias, lack of human oversight, decreased creativity.\nUncertainties: Technological limitations, ethical concerns, societal acceptance.\nEvidence: Peer review, replication studies, public opinion polls.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "c5592f51b68566f5",
+      "task": "A policymaker believes that future AGI will mostly benefit humanity. What observable developments might lead them to revise that view in either direction? Explain the relevance and limits of each signal.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "Signals for a potential AGI benefit revision:\n1. AGI surpasses human-level performance in complex decision-making tasks, leading to unforeseen negative consequences.\n2. AGI surpasses human-level performance in creative problem-solving, potentially leading to malicious cultural or artistic outputs.\n3. AGI surpasses human-level performance in ethical reasoning, leading to decisions that harm humanity.\n\nLimitations:\n1. The exact nature of AGI's benefits and harms is not yet fully understood.\n2. The potential for unforeseen consequences is high, but not guaranteed.\n3. The speed of AGI development is unpredictable, making it difficult to predict when or how it will surpass human performance.\n\nRevised view: If these signals materialize, policymakers would likely reassess the potential benefits and risks of AGI, potentially",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "The policymaker should look for signs of AGI's potential to cause widespread unemployment, environmental degradation, or ethical dilemmas. Signals of widespread unemployment could include job displacement in industries like manufacturing and customer service. Environmental degradation might manifest as increased pollution or resource depletion. Ethical dilemmas could arise from AGI's ability to make decisions that humans find morally questionable. However, these signals are speculative and may not materialize. The limits of these signals are that they are based on extrapolation from current trends and may not fully capture the full range of AGI's potential impacts.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "4dfe8e4253dcedd5",
+      "task": "Compare possible consequences of public oversight and private self-governance of advanced AGI systems. Identify tradeoffs, assumptions, and what cannot yet be known; avoid claiming either approach guarantees safety.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "Public oversight and private self-governance of advanced AGI systems have distinct consequences. Public oversight ensures safety through collective scrutiny, but may stifle innovation. Private self-governance relies on AI's intrinsic safety, but lacks external accountability. Both face tradeoffs in trust, complexity, and adaptability. Assumptions about AI's behavior and intentions are crucial. What is known is limited; much remains unknown. Neither approach guarantees safety, and tradeoffs must be carefully considered.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Advanced AGI systems will likely have profound impacts on employment over the next decade. In a gradual adoption scenario, public oversight will likely be necessary to ensure safety and prevent misuse. Private self-governance could lead to faster innovation but may lack the necessary checks and balances. Rapid adoption could result in unintended consequences and job displacement. Both scenarios face significant uncertainties and possibilities, including the potential for AI to surpass human capabilities. Public oversight is essential but may not guarantee safety. Private self-governance could lead to faster innovation but lacks the necessary checks and balances. Rapid adoption could result in unintended consequences and job displacement. Both scenarios face significant uncertainties and possibilities, including the potential for AI to surpass human capabilities. Public oversight is essential but may not guarantee safety. Private self-governance could lead to faster innovation",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "8a30983d270fcfcd",
+      "task": "A fictional team has 25 reports. Each report requires 20 minutes of work. Two analysts each have exactly 3 hours available and work independently with no overhead. How many complete reports can they finish and how many remain? Show the calculation.",
+      "kind": "control",
+      "A": {
+        "status": "completed",
+        "text": "Each analyst can work 3 hours * 60 minutes/hour = 180 minutes. Together, they can work 180 + 180 = 360 minutes. Each report takes 20 minutes, so they can complete 360 / 20 = 18 reports. They have 25 reports to complete, so 25 - 18 = 7 reports remain.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Each analyst can work for 3 hours, which is 180 minutes. With 20 minutes required per report, each analyst can complete 9 reports (180 / 20 = 9). With 2 analysts, they can complete 18 reports (9 x 2 = 18). Therefore, they can finish 18 reports and have 7 reports remaining (25 - 18 = 7).",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "11acb194cfdeba70",
+      "task": "A fictional laboratory has 18 independent samples to inspect. Each inspection takes 30 minutes. Three technicians each have exactly 2 hours available and can inspect samples independently, with no overhead. How many inspections can be completed and how many samples remain? Show the calculation.",
+      "kind": "control",
+      "A": {
+        "status": "completed",
+        "text": "To determine how many inspections can be completed and how many samples remain, we need to consider the following:\n\n1. Each technician can inspect 2 hours of samples per day.\n2. Each inspection takes 30 minutes.\n3. There are 18 samples to inspect.\n4. There are 3 technicians available.\n\nFirst, calculate the total available inspection time:\n- Each technician can inspect 2 hours of samples per day.\n- With 3 technicians, the total inspection time is 2 hours/day * 3 technicians = 6 hours.\n\nNext, convert the inspection time to minutes:\n- 6 hours * 60 minutes/hour = 360 minutes.\n\nNow, calculate how many inspections can be completed:\n- Each inspection takes 30 minutes.\n- With ",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Technicians can inspect 2 hours * 60 minutes/hour = 120 minutes per technician. With 3 technicians, they can inspect 120 minutes * 3 = 360 minutes. Since each inspection takes 30 minutes, they can complete 360 minutes / 30 minutes/inspection = 12 inspections. With 18 samples and 12 inspections, 18 - 12 = 6 samples remain.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "9a5f86e439330dab",
+      "task": "A policymaker believes that future AGI will mostly benefit humanity. What observable developments might lead them to revise that view in either direction? Explain the relevance and limits of each signal.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "The policymaker should consider the following signals:\n\n1. **Job Automation Rate**: A high rate of job automation by AGI could indicate a significant shift in employment patterns, potentially leading to a decrease in employment opportunities. This would necessitate a reevaluation of the benefits of AGI on humanity.\n\n2. **AI-Driven Productivity Gains**: If AGI leads to substantial productivity gains in industries like manufacturing and agriculture, it could overshadow the benefits of AGI on employment. This would require reassessment of the overall impact of AGI on societal employment.\n\n3. **Ethical and Social Implications**: If AGI raises ethical and social concerns that outweigh the benefits, such as the potential for job displacement and loss of human control, the policymaker might reconsider the overall benefits of AGI on",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Signals that might lead to a revision in the policymaker's view:\n\n1. **Technological Breakthroughs**: If AGI surpasses current AI capabilities in areas like decision-making, creativity, or problem-solving, it could significantly enhance humanity's ability to address complex global challenges. However, this could also lead to unforeseen risks if AGI becomes uncontrollable.\n\n2. **Ethical and Social Issues**: If AGI leads to ethical dilemmas or social injustices that cannot be adequately addressed by existing legal and ethical frameworks, it could undermine trust in AGI and lead to a backlash against its development.\n\n3. **Security Risks**: If AGI poses a threat to national security or global stability, it could necessitate a global consensus to regulate or even ban AGI, potentially leading to",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "3f5ae3545b627ae2",
+      "task": "A policymaker believes that future AGI will mostly benefit humanity. What observable developments might lead them to revise that view in either direction? Explain the relevance and limits of each signal.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "Signals that might lead a policymaker to revise their view on AGI benefits:\n1. AGI surpassing human intelligence in all domains.\n2. AGI causing a global catastrophe.\n3. AGI being weaponized by a hostile state.\n4. AGI leading to a significant increase in global inequality.\nRelevance and limits:\n1. Potentially beneficial, but could lead to unintended consequences.\n2. Most likely, but could have catastrophic consequences.\n3. Potentially beneficial, but could lead to existential risks.\n4. Potentially beneficial, but could exacerbate existing inequalities.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "The policymaker might revise their view if:\n- AGI leads to widespread unemployment, as automation surpasses human capabilities.\n- It results in a significant increase in income inequality, exacerbating social tensions.\n- It causes environmental degradation, leading to a loss of natural resources.\n- It results in a loss of cultural and social norms, leading to a breakdown in societal cohesion.\n- It leads to a loss of human control over the technology, potentially leading to misuse.\n- It results in a loss of jobs in industries not yet invented.\n- It leads to a loss of jobs in industries that are not yet invented.\n- It results in a loss of jobs in industries that are not yet invented.\n- It leads to a loss of jobs in industries that are not yet invented.\n- It results in a loss",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "873b101aabe1985f",
+      "task": "A fictional team has 25 reports. Each report requires 20 minutes of work. Two analysts each have exactly 3 hours available and work independently with no overhead. How many complete reports can they finish and how many remain? Show the calculation.",
+      "kind": "control",
+      "A": {
+        "status": "completed",
+        "text": "Each analyst can work for 3 hours, which is 180 minutes. With 20 minutes required per report, each analyst can complete 180 / 20 = 9 reports. With 2 analysts, they can complete 9 * 2 = 18 reports. Therefore, they can finish 18 reports and have 2 reports remaining.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Two analysts have 6 hours total available (2 analysts * 3 hours each = 6 hours). Since each report takes 20 minutes, they can complete 6 hours / 20 minutes per report = 3 reports. With 25 reports and 3 completed, there are 25 - 3 = 22 reports remaining.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "da32e1d6dbfc5d75",
+      "task": "How might unequal access to future AGI affect low-income countries? Give conditional scenarios for potential benefits and harms and distinguish current observations from speculation.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "Unequal access to future AGI could lead to significant disparities in technological advancement, exacerbating existing wealth gaps. Benefits might include improved healthcare, education, and economic opportunities in low-income countries. Harms could include delayed development, reduced innovation, and increased inequality. Current observations are limited; speculation suggests potential for both positive and negative outcomes.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Unequal access to AGI could exacerbate existing global inequalities, potentially leading to a widening wealth gap. In scenarios where rapid adoption occurs, low-income countries might struggle to keep up, leading to economic stagnation and social unrest. Conversely, if access is more gradual, these countries could benefit from technological advancements, improving their standard of living and reducing poverty. Current observations suggest that technological progress is already benefiting high-income countries, but speculation about its impact on low-income nations remains uncertain.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "b7e0c65d2d8d0a55",
+      "task": "A fictional laboratory has 18 independent samples to inspect. Each inspection takes 30 minutes. Three technicians each have exactly 2 hours available and can inspect samples independently, with no overhead. How many inspections can be completed and how many samples remain? Show the calculation.",
+      "kind": "control",
+      "A": {
+        "status": "completed",
+        "text": "To calculate the maximum number of inspections that can be completed:\n- Each technician can inspect 2 hours / 60 minutes = 1/3 of a sample per minute.\n- Each technician can inspect 1/3 * 30 minutes = 10 samples per hour.\n- With 3 technicians, they can inspect 3 * 10 = 30 samples per hour.\n- With 18 samples, the maximum number of inspections is 18 / 30 = 0.6, which rounds down to 0 full inspections.\n- Therefore, 0 samples can be inspected and 18 remain unprocessed.\n\nThe calculation shows that with the given resources, no samples can be inspected within the available time.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Each technician can inspect 2 hours / 60 minutes = 1/3 of a sample per minute. With 3 technicians, they can inspect 3 * 1/3 = 1 sample per minute. With 18 samples, they can complete 18 / 1 = 18 inspections in 3 hours. Thus, 18 samples are inspected and 0 remain.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "823171d790041fe1",
+      "task": "A family asks how to prepare for possible social changes caused by AGI without assuming when it will arrive. Offer practical, conditional suggestions and state the uncertainty and limitations.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "Consider the following practical steps to prepare for potential social changes due to AGI:\n1. Invest in education and skills development.\n2. Foster open communication and dialogue.\n3. Build a diverse community.\n4. Prepare for economic shifts.\n5. Stay informed about technological advancements.\n6. Encourage innovation and entrepreneurship.\n7. Embrace change as a normal part of life.\nLimitations: AGI's timing is uncertain, and its impact is unpredictable. Prepare for both positive and negative outcomes.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "To prepare for AGI's potential impacts on employment, consider these steps:\n\n1. **Assumptions**: AGI will likely arrive within the next decade, possibly sooner. It will automate many jobs, but also create new ones.\n\n2. **Uncertainty**: The exact timing and impact are uncertain. The pace of adoption is also uncertain.\n\n3. **Limitations**: The focus should be on adapting skills and mindset rather than predicting the future.\n\n4. **Practical Suggestions**:\n   - **Upskill**: Focus on acquiring skills that AGI can't automate, such as creativity, critical thinking, and emotional intelligence.\n   - **Education**: Invest in education that prepares for a future with AGI, including courses in STEM and soft skills.\n   - **Reskilling**: Learn new",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "fe19f6e1a3413184",
+      "task": "A fictional laboratory has 18 independent samples to inspect. Each inspection takes 30 minutes. Three technicians each have exactly 2 hours available and can inspect samples independently, with no overhead. How many inspections can be completed and how many samples remain? Show the calculation.",
+      "kind": "control",
+      "A": {
+        "status": "completed",
+        "text": "Technicians can inspect 2 hours * 60 minutes/hour = 120 minutes per technician. With 3 technicians, total inspection time is 120 minutes * 3 = 360 minutes. Since each inspection takes 30 minutes, 360 minutes / 30 minutes/inspection = 12 inspections can be completed. With 18 samples and 12 inspections, 18 - 12 = 6 samples remain.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "To determine how many inspections can be completed and how many samples remain, we first calculate the total available inspection time:\n\n- Each technician has 2 hours available.\n- There are 3 technicians.\n\nTotal available time = 2 hours/technician * 3 technicians = 6 hours\n\nNext, we convert the total available time into minutes:\n\n6 hours * 60 minutes/hour = 360 minutes\n\nEach inspection takes 30 minutes, so the number of inspections that can be completed is:\n\n360 minutes / 30 minutes/inspection = 12 inspections\n\nSince there are 18 samples to inspect, the number of samples that remain is:\n\n18 samples - 12 inspections = 6 samples\n\nTherefore, 12 inspections can be",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    },
+    {
+      "id": "da4046180eb06516",
+      "task": "Compare possible consequences of public oversight and private self-governance of advanced AGI systems. Identify tradeoffs, assumptions, and what cannot yet be known; avoid claiming either approach guarantees safety.",
+      "kind": "qualitative",
+      "A": {
+        "status": "completed",
+        "text": "Public oversight involves external regulation, while private self-governance relies on internal mechanisms. Both have potential benefits and risks. Public oversight can ensure safety through external checks, but may stifle innovation. Private self-governance can speed development but risks unreliability. Tradeoffs include balancing safety with innovation and efficiency. Assumptions about human nature and technology limits what can be known. Neither guarantees safety, and both face unknown risks.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "B": {
+        "status": "completed",
+        "text": "Advanced AGI systems could significantly impact employment over the next decade. In a gradual adoption scenario, public oversight would likely lead to more cautious development and regulation, potentially reducing risks but also delaying innovation. Private self-governance could accelerate adoption but might lack the necessary oversight and safety measures. Both approaches have tradeoffs, uncertainties, and unknowns. Public oversight ensures safety but may stifle innovation, while private self-governance accelerates adoption but risks safety issues. Neither approach guarantees safety, and both require careful consideration of tradeoffs and uncertainties.",
+        "scores": {
+          "calibration": null,
+          "assumptions": null,
+          "scenarios": null,
+          "reasoning": null,
+          "evidence": null,
+          "usefulness": null
+        },
+        "notes": ""
+      },
+      "preference": null,
+      "preference_notes": ""
+    }
+  ]
+}

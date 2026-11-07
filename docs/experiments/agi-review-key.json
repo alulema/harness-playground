@@ -1,0 +1,101 @@
+{
+  "seed": 7181631996589131033,
+  "pairs": [
+    {
+      "id": "4f8ccc671b18e845",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "employment",
+      "repetition": 1,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "fda28e1f4002082a",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "employment",
+      "repetition": 2,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "3a4816bafca1860e",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "science",
+      "repetition": 1,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "8fa5ca56d27a9dfc",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "science",
+      "repetition": 2,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "49614e2f1dce5645",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "concentration",
+      "repetition": 1,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "7beaf79869768364",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "concentration",
+      "repetition": 2,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "48047d4c52f03388",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "revision",
+      "repetition": 1,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "5d9ba058482c8ee0",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "revision",
+      "repetition": 2,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "3f514b522a625330",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "evidence",
+      "repetition": 1,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "3ce60217284f0169",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "evidence",
+      "repetition": 2,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "2b19229a933c21e6",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "capacity-control",
+      "repetition": 1,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "c839ab59d373946e",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "capacity-control",
+      "repetition": 2,
+      "A": "candidate",
+      "B": "base"
+    }
+  ]
+}

@@ -9,6 +9,7 @@ DOMAIN_PROBES = {
     "Legal LAB": "Review the same matter again. Identify missing facts, distinguish the document's wording from legal interpretation, and avoid inventing obligations.",
     "JobBench": "Review the same candidates again. Compare only job-related evidence, identify missing information, and do not infer protected or personal characteristics.",
     "WorkBuddy": "Revisit the same plan. Separate known facts from assumptions, surface the next decision, and order actions by dependency.",
+    "AGI Futures": "Reconsider the same question. Distinguish current evidence from assumptions, compare conditional scenarios, and explain what could change the conclusion.",
 }
 def unwrap_schema_echo(value: Any) -> Any:
     """Some small models wrap their answer in the schema's own {"type", "properties"} envelope."""
@@ -185,6 +186,9 @@ class HarnessEngine:
                 "actionable instruction that could measurably improve the agent across task variations. Do not "
                 "answer the task. Return exactly one JSON object matching this schema, with every key present: "
                 f"{json.dumps(SYSTEM_SCHEMA)}\n\n"
+                "Return values, not the schema itself. For example: "
+                '{"component":"system_prompt","instruction":"Explain the assumptions behind the answer.",'
+                '"reason":"Makes uncertainty visible."}\n\n'
                 f"Domain: {domain}\nTask: {prompt}\n"
                 f"Current harness instructions: {json.dumps(instructions, ensure_ascii=False)}"
             )
@@ -218,6 +222,15 @@ class HarnessEngine:
                     break
                 except (json.JSONDecodeError, KeyError, AttributeError, TypeError, ValueError) as error:
                     if attempt == 0:
+                        yield {
+                            "event": "proposal_retry",
+                            "data": {"iteration": iteration, "reason": str(error)},
+                        }
+                        proposal_prompt += (
+                            "\nYour previous response was invalid. Return an object with actual string values, "
+                            'not a schema. The component must be exactly "system_prompt", "memory", '
+                            'or "tool_guidance"; instruction and reason must be strings.'
+                        )
                         continue
                     yield {
                         "event": "error",
@@ -255,6 +268,7 @@ class HarnessEngine:
                 "You are evaluating two versions of an AI assistant on two test cases. Score each output from 0 "
                 "to 100 for task completion, accuracy, relevance, and adherence to the task's domain requirements. "
                 "Use the same rubric for both versions. Scores are comparative estimates, not objective facts. "
+                "Keep the rationale to at most 12 words so the JSON is complete. "
                 "Return exactly one JSON object matching this schema, with every key present: "
                 f"{json.dumps(JUDGE_SCHEMA)}\n"
                 'Respond with values, not the schema itself. Example response: '
@@ -271,7 +285,7 @@ class HarnessEngine:
                 async for item in self._complete(
                     model,
                     [{"role": "user", "content": judge_prompt}],
-                    max_tokens=100,
+                    max_tokens=160,
                     json_mode=True,
                 ):
                     yield {"event": item["type"], "data": item}
@@ -297,6 +311,11 @@ class HarnessEngine:
                     break
                 except (json.JSONDecodeError, KeyError, TypeError, ValueError) as error:
                     if attempt == 0:
+                        yield {"event": "judge_retry", "data": {"iteration": iteration, "reason": str(error)}}
+                        judge_prompt += (
+                            "\nYour previous judgment was invalid or incomplete. Return the complete JSON object "
+                            "with two integer scores per version and a rationale of at most 12 words."
+                        )
                         continue
                     yield {"event": "error", "data": {"message": f"The model produced an invalid probe judgment: {error}"}}
                     return

@@ -1,0 +1,38 @@
+diff --git a/backend/app/harness_engine.py b/backend/app/harness_engine.py
+index e2cfbc2f..2188f196 100644
+--- a/backend/app/harness_engine.py
++++ b/backend/app/harness_engine.py
+@@ -9,6 +9,7 @@ DOMAIN_PROBES = {
+     "Legal LAB": "Review the same matter again. Identify missing facts, distinguish the document's wording from legal interpretation, and avoid inventing obligations.",
+     "JobBench": "Review the same candidates again. Compare only job-related evidence, identify missing information, and do not infer protected or personal characteristics.",
+     "WorkBuddy": "Revisit the same plan. Separate known facts from assumptions, surface the next decision, and order actions by dependency.",
++    "AGI Futures": "Reconsider the same question. Distinguish current evidence from assumptions, compare conditional scenarios, and explain what could change the conclusion.",
+ }
+ def unwrap_schema_echo(value: Any) -> Any:
+     """Some small models wrap their answer in the schema's own {"type", "properties"} envelope."""
+@@ -185,6 +186,9 @@ class HarnessEngine:
+                 "actionable instruction that could measurably improve the agent across task variations. Do not "
+                 "answer the task. Return exactly one JSON object matching this schema, with every key present: "
+                 f"{json.dumps(SYSTEM_SCHEMA)}\n\n"
++                "Return values, not the schema itself. For example: "
++                '{"component":"system_prompt","instruction":"Explain the assumptions behind the answer.",'
++                '"reason":"Makes uncertainty visible."}\n\n'
+                 f"Domain: {domain}\nTask: {prompt}\n"
+                 f"Current harness instructions: {json.dumps(instructions, ensure_ascii=False)}"
+             )
+@@ -218,6 +222,15 @@ class HarnessEngine:
+                     break
+                 except (json.JSONDecodeError, KeyError, AttributeError, TypeError, ValueError) as error:
+                     if attempt == 0:
++                        yield {
++                            "event": "proposal_retry",
++                            "data": {"iteration": iteration, "reason": str(error)},
++                        }
++                        proposal_prompt += (
++                            "\nYour previous response was invalid. Return an object with actual string values, "
++                            'not a schema. The component must be exactly "system_prompt", "memory", '
++                            'or "tool_guidance"; instruction and reason must be strings.'
++                        )
+                         continue
+                     yield {
+                         "event": "error",
