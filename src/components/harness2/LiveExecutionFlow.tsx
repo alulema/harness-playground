@@ -82,7 +82,7 @@ export default function LiveExecutionFlow({
                 <span className="min-w-0 flex-1 leading-relaxed">
                   {step.iteration > 0 && <span className="muted mr-1">#{step.iteration}</span>}
                   <b className="capitalize">{step.stage}</b>
-                  {step.component && <><span className="muted mx-1">·</span><span className="muted">{label[step.component]}</span></>}
+                  {step.component && <><span className="muted mx-1">·</span><span className="muted">proposed category: {label[step.component]}</span></>}
                   {step.proposal && <span className="ml-1.5">{step.proposal}</span>}
                   {step.stage === 'probe' && step.status === 'complete' && (
                     <span className={`ml-1.5 ${step.accepted ? 'positive-text' : 'muted'}`}>

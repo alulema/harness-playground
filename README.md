@@ -18,7 +18,7 @@ docker run --rm -p 8080:8080 \
 
 Open `http://localhost:8080/`. The app listens on `0.0.0.0:8080`, serves the UI at `/`, exposes `/healthz`, and streams live optimization events from `POST /api/v1/stream`. `GET /api/v1/models` lists available local Ollama models. The container starts Ollama and the API together and waits for Ollama readiness before starting the API.
 
-Allow several gigabytes of memory for local inference; 4 GiB or more is recommended. The bundled model is about 986 MB, and the locally built image is about 1.2 GB (registry size varies). A live run can take a few minutes on CPU; one iteration is selected by default, and a second iteration is available for a deeper, slower run. The app is designed for an internal ingress behind the demo gateway, which provides authentication and TLS; the app itself deliberately has neither.
+Allow several gigabytes of memory for local inference; 4 GiB or more is recommended. The bundled Qwen and Gemma weights are approximately 986 MB and 1.6 GB respectively; the locally built image is about 2.8 GB (registry size varies). A live run can take a few minutes on CPU; one iteration is selected by default, and a second iteration is available for a deeper, slower run. The app is designed for an internal ingress behind the demo gateway, which provides authentication and TLS; the app itself deliberately has neither.
 
 ## Container image
 
@@ -65,14 +65,18 @@ Open the Astro URL shown in the terminal. Astro proxies `/api` requests to FastA
 
 ## Runtime limits and evaluation
 
-- Maximum of two optimization iterations and 8,192 tokens per run; the UI offers 2,048, 4,096, or 8,192-token budgets.
+- Maximum of two optimization iterations and 8,192 tokens per run. The UI offers requested budgets of 2,048, 4,096, or 8,192 tokens; the backend applies a minimum of 3,000 per iteration, so the effective budget may be higher than requested.
 - One iteration is selected by default to keep live runs shorter; two iterations are available when a deeper run is preferred.
 - One concurrent run and three runs per minute per client IP.
 - The bundled default is Qwen2.5 1.5B Instruct; Gemma 2 2B is also bundled and selectable (the model list is read from Ollama, and `BUNDLED_MODELS` marks bundled entries). Live runs make multiple model calls; latency depends on available CPU and memory.
 - Each probe includes the original task context plus a domain-specific variation. No external tools or data sources are called.
 - The same model proposes instructions, generates responses, and judges current versus candidate outputs. A higher model-judge score is not proof of better real-world performance.
+- Proposal categories such as memory and tool guidance are labels; every accepted instruction is added to the system prompt. The demo has no persistent memory or cross-task improvement library, and its scenarios are not official benchmark runs.
+- The live API's `finalJudgeScore` is the selected score from the last comparison, not a total improvement or an accuracy percentage. `totalImprovement` remains as a legacy alias; cached examples instead contain illustrative change values.
 - Cached mode is a precomputed illustrative trace. If the live API is unavailable before an SSE event arrives, the UI replays the cached example and labels it accordingly.
 - Outputs are not legal, hiring, or operational advice. Do not submit sensitive personal or confidential information.
+
+For a reproducible qualitative case study, see [`docs/experiments/workbuddy-synthetic.md`](docs/experiments/workbuddy-synthetic.md).
 
 ## Checks
 

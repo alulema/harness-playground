@@ -47,3 +47,16 @@ Both model weights are baked into the image so model selection works without a n
 - Updated this repository's handoff with the two bundled models, measured local timings, image state, and remaining deployment checks in [harness-playground#4](https://github.com/alulema/harness-playground/pull/4).
 
 The website's build/deploy workflow and local containers were verified. A full live session through the deployed website gateway—including startup time for the larger image, long-running SSE behavior, and session expiry during a two-iteration Gemma run—remains to be verified in that hosting environment.
+
+## 2026-11-07 — Qualitative evaluation and clearer claims
+
+- Captured three batches of synthetic local runs with Qwen and Gemma, including
+  failed runs, generated text, judge decisions, token usage, and model metadata.
+  The protocol, qualitative review, objective arithmetic check, and raw data
+  are in [`experiments/workbuddy-synthetic.md`](experiments/workbuddy-synthetic.md).
+- The arithmetic task exposed a gap between favorable judge scores and correct
+  answers; no real rejected candidate occurred in these batches. These
+  observations are exploratory and do not establish benchmark performance.
+- Clarified the UI's system-prompt-only implementation, subjective judge
+  scores, cached illustrative results, and effective token-budget floor. Added
+  `finalJudgeScore` while retaining the legacy API field for compatibility.

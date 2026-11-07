@@ -48,12 +48,15 @@ export default function Playground() {
       </header>
 
       <section className="mx-auto mb-9 max-w-3xl text-center">
-        <div className="badge mb-4"><Sparkles size={12} />Recursive agent improvement</div>
+        <div className="badge mb-4"><Sparkles size={12} />Inspired by Harness²</div>
         <h1 className="text-balance text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
-          Better agents, <span className="accent-gradient">one loop at a time.</span>
+          Explore agent instructions, <span className="accent-gradient">one loop at a time.</span>
         </h1>
         <p className="muted mx-auto mt-4 max-w-2xl text-sm leading-6 sm:text-base sm:leading-7">
-          Watch Harness² refine prompts, memory, and tool guidance through a measurable cycle of <span className="text-[var(--color-text,#f4f3f7)]">Propose → Probe → Compose</span>.
+          Explore a simplified <span className="text-[var(--color-text,#f4f3f7)]">Propose → Probe → Compose</span> cycle. A local model proposes and judges instructions; its scores are estimates, not proof of improvement.
+        </p>
+        <p className="muted mx-auto mt-3 max-w-2xl text-xs leading-5">
+          All accepted changes are system-prompt instructions. This demo does not modify persistent memory, invoke tools, run official benchmarks, or learn across tasks.
         </p>
       </section>
 

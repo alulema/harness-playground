@@ -342,6 +342,7 @@ class HarnessEngine:
                 "baseOutput": initial_baseline,
                 "optimizedOutput": best_outputs[0],
                 "harness": instructions,
+                "finalJudgeScore": current_score,
                 "totalImprovement": current_score,
                 "acceptedIterations": accepted_iterations,
                 "metrics": {

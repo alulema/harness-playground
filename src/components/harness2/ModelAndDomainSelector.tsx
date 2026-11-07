@@ -112,9 +112,9 @@ export default function ModelAndDomainSelector({
         <span>{prompt.length}/1200</span>
       </div>
       <div className="panel-inset muted mt-4 flex flex-wrap items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-[11px]">
-        <span className="flex items-center gap-2"><Cpu className="accent-text" size={14} />Maximum token budget</span>
+        <span className="flex items-center gap-2"><Cpu className="accent-text" size={14} />Requested token budget · minimum 3,000 per iteration</span>
         <select
-          aria-label="Maximum token budget"
+          aria-label="Requested token budget"
           className="field-control !min-h-8 !w-auto !py-1 text-xs"
           disabled={disabled}
           value={tokenBudget}
