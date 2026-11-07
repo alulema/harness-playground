@@ -77,6 +77,13 @@ Open the Astro URL shown in the terminal. Astro proxies `/api` requests to FastA
 - Outputs are not legal, hiring, or operational advice. Do not submit sensitive personal or confidential information.
 
 For a reproducible qualitative case study, see [`docs/experiments/workbuddy-synthetic.md`](docs/experiments/workbuddy-synthetic.md).
+The separate [AGI-futures study protocol](docs/experiments/agi-study.md) freezes
+instructions before testing held-out questions and prepares blinded A/B packets
+for human review; it does not predict the future.
+The separate [`agi-futures-v2` protocol](docs/experiments/agi-v2-protocol.md)
+defines a follow-on comparison and independent human review.
+Its [execution record](docs/experiments/agi-v2-observations.md) reports
+failures and the arithmetic controls; qualitative human review is pending.
 
 ## Checks
 

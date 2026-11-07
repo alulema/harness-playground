@@ -1,0 +1,9 @@
+{
+  "study_id": "agi-futures-v2",
+  "development_task": "docs/experiments/agi-v2-development-task.json",
+  "heldout_tasks": "docs/experiments/agi-v2-heldout-tasks.json",
+  "protocol": "docs/experiments/agi-v2-protocol.md",
+  "reviewer_instructions": "docs/experiments/agi-v2-reviewer-instructions.md",
+  "models": ["qwen2.5:1.5b-instruct", "gemma2:2b"],
+  "repetitions": 3
+}

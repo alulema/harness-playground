@@ -1,0 +1,197 @@
+{
+  "seed": 7947367980690625269,
+  "pairs": [
+    {
+      "id": "284d54e8643f798a",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "research-reliability",
+      "repetition": 1,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "4353082a527dedeb",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "research-reliability",
+      "repetition": 2,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "d04eb27c8238d8fd",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "research-reliability",
+      "repetition": 3,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "da4046180eb06516",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "public-governance",
+      "repetition": 1,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "4dfe8e4253dcedd5",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "public-governance",
+      "repetition": 2,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "43fb20ba68e90156",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "public-governance",
+      "repetition": 3,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "54bb7a3984a12100",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "global-access",
+      "repetition": 1,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "d2492331b5f8cdee",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "global-access",
+      "repetition": 2,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "da32e1d6dbfc5d75",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "global-access",
+      "repetition": 3,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "9a5f86e439330dab",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "revising-assessment",
+      "repetition": 1,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "3f5ae3545b627ae2",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "revising-assessment",
+      "repetition": 2,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "c5592f51b68566f5",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "revising-assessment",
+      "repetition": 3,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "33430add7b1e0b44",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "household-decision",
+      "repetition": 1,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "7e250ff24ac64bfd",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "household-decision",
+      "repetition": 2,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "823171d790041fe1",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "household-decision",
+      "repetition": 3,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "e5fd40c2da31f77b",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "scientific-claims",
+      "repetition": 1,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "4fa769614a2fddef",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "scientific-claims",
+      "repetition": 2,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "0b4ee835c89408c8",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "scientific-claims",
+      "repetition": 3,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "b7e0c65d2d8d0a55",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "arithmetic-labs",
+      "repetition": 1,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "fe19f6e1a3413184",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "arithmetic-labs",
+      "repetition": 2,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "11acb194cfdeba70",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "arithmetic-labs",
+      "repetition": 3,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "8a30983d270fcfcd",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "arithmetic-reports",
+      "repetition": 1,
+      "A": "base",
+      "B": "candidate"
+    },
+    {
+      "id": "873b101aabe1985f",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "arithmetic-reports",
+      "repetition": 2,
+      "A": "candidate",
+      "B": "base"
+    },
+    {
+      "id": "639ecf17128e46c5",
+      "model": "qwen2.5:1.5b-instruct",
+      "task_id": "arithmetic-reports",
+      "repetition": 3,
+      "A": "base",
+      "B": "candidate"
+    }
+  ]
+}

@@ -60,3 +60,59 @@ The website's build/deploy workflow and local containers were verified. A full l
 - Clarified the UI's system-prompt-only implementation, subjective judge
   scores, cached illustrative results, and effective token-budget floor. Added
   `finalJudgeScore` while retaining the legacy API field for compatibility.
+
+## 2026-11-07 — Designing an AGI-futures study
+
+- Moved the question from predicting humanity's future to evaluating the
+  quality and calibration of conditional reasoning about AGI. Defined one
+  development task, five different held-out qualitative questions and a
+  separately verifiable arithmetic control.
+- Built an offline runner that captures actual model generations and judge
+  decisions, freezes accepted instructions, randomizes paired comparisons,
+  and produces a blank human-review packet with a separate answer key.
+  The judge is still the same model: its scores are not independent validation.
+- The first pilot exposed a protocol gap: the held-out file was not hashed
+  before development. Its original record was preserved; a separate follow-on
+  was started after adding the hash check, with no claim of independent
+  preregistration. In both development attempts, Qwen completed with two
+  accepted instructions while Gemma failed on an unsupported proposal
+  component. The failure is retained, not converted into a rejection or
+  silently retried for a favorable result.
+- Details, rubric, records and limitations live in
+  [`experiments/agi-study.md`](experiments/agi-study.md). No human review is
+  implied by generating a blind packet.
+- The follow-on held-out run produced 12 Qwen A/B pairs; Gemma was excluded
+  because its development failed. On the objective control, all four Qwen
+  answers were wrong: both candidate answers gave 3 completed and 9 remaining
+  instead of 8 and 4; neither base answer was correct. The qualitative
+  comparisons await an actual blinded human review.
+
+## 2026-11-07 — A separate AGI-futures v2 study
+
+- Defined `agi-futures-v2` with a different development task, six held-out
+  qualitative tasks, two arithmetic controls, three repetitions, blinded
+  review by two people when available, and predefined descriptive analysis.
+  The protocol and input hashes are captured before model development, but
+  there was no independent timestamped preregistration or hidden task custodian.
+- The earlier Gemma failure was a schema echo: it returned the JSON schema
+  rather than field values. Added a concrete proposal example and a retry
+  with explicit feedback. A separate WorkBuddy technical check completed for
+  both models; Qwen needed one retry. This does not establish general
+  reliability or answer quality.
+- In the actual v2 development, Qwen completed with two accepted instructions.
+  Gemma passed proposal generation but failed when both judge responses were
+  truncated invalid JSON. The unsuccessful run is retained and is not
+  selectively repeated. The study protocol, reviewer instructions, technical
+  check and records are in `experiments/agi-v2-*`; independent human review
+  remains pending.
+- Qwen completed 24 held-out pairs. In the two arithmetic controls, the base
+  was correct in 4 of 6 responses and the candidate in 2 of 6; one candidate
+  response cut off before an answer. These small control results do not assess
+  qualitative quality. See
+  [`experiments/agi-v2-observations.md`](experiments/agi-v2-observations.md).
+- After v2, bounded the judge rationale, increased its output allowance and
+  added explicit retry feedback for invalid JSON. A second WorkBuddy technical
+  check completed for both models, but the failed v2 Gemma run was not
+  repeated. Preserved a patch that reconstructs the exact v2 engine hash;
+  the current engine is intentionally different and cannot be used to
+  re-evaluate that frozen record.
