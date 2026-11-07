@@ -17,7 +17,11 @@ export default function DiffViewer({ result }: { result: RunResult | null }) {
         <GitCompareArrows className="accent-text" size={17} />
         <div>
           <h2 className="text-sm font-semibold">Agent output comparison</h2>
-          <p className="muted mt-1 text-xs">Base response versus Harness² optimized response</p>
+          <p className="muted mt-1 text-xs">
+            {result?.evaluation === 'precomputed-demo-trace'
+              ? 'Illustrative base and example responses'
+              : 'Base response versus the response retained by the demo'}
+          </p>
         </div>
       </div>
       {result ? (
@@ -25,7 +29,7 @@ export default function DiffViewer({ result }: { result: RunResult | null }) {
           <div className="mb-3 grid gap-3 md:grid-cols-[1fr_auto_1fr] md:items-stretch">
             <OutputCard label="Base agent" value={result.baseOutput} />
             <div className="muted flex items-center justify-center py-1"><ArrowRight className="hidden md:block" size={16} /><span className="text-[10px] uppercase tracking-widest md:hidden">Optimized</span></div>
-            <OutputCard label={`Optimized · ${result.model}`} value={result.optimizedOutput} optimized />
+            <OutputCard label={result.evaluation === 'precomputed-demo-trace' ? 'Illustrative example' : `Selected response · ${result.model}`} value={result.optimizedOutput} optimized />
           </div>
           <div className="panel-inset rounded-xl p-4">
             <div className="mb-3 flex items-center justify-between gap-2">
@@ -52,12 +56,18 @@ export default function DiffViewer({ result }: { result: RunResult | null }) {
             {result.evaluation === 'precomputed-demo-trace'
               ? 'Precomputed illustrative score'
               : 'Same-model LLM judge · comparative estimate'}
-            {' · '}final score {Math.round(result.totalImprovement)}/100 · not an objective benchmark.
+            {result.evaluation === 'precomputed-demo-trace'
+              ? ` · illustrative change +${result.illustrativeImprovement ?? 0} points`
+              : ` · selected score in last comparison ${Math.round(result.finalJudgeScore ?? 0)}/100 (not an improvement delta)`}
+            {' · '}not an objective benchmark.
           </p>
+          {result.evaluation !== 'precomputed-demo-trace' && (
+            <p className="muted mt-1 text-[10px]">The last comparison can use newly generated responses, so its score may not correspond to the retained response shown above.</p>
+          )}
         </>
       ) : (
         <div className="grid gap-3 md:grid-cols-2">
-          {['Base agent', 'Harness² optimized'].map((item) => (
+          {['Base agent', 'Selected response'].map((item) => (
             <div className="panel-inset min-h-[150px] rounded-xl border border-dashed border-[var(--demo-border)] p-4" key={item}>
               <p className="eyebrow">{item}</p>
               <div className="mt-5 space-y-2">

@@ -1,0 +1,2021 @@
+{
+  "description": "Synthetic qualitative experiment; not a benchmark.",
+  "revision": "a5bcabb32f1744a34fad8f65571c52627a4fb967",
+  "prompt": "A small team must prepare a public demo for Friday. The prototype exists, but accessibility and deployment have not been tested. There are two engineers available today and no confirmed budget. Suggest three prioritized next actions, state what is known versus unknown, and identify one risk. Do not invent a budget or claim testing is complete.",
+  "domain": "WorkBuddy",
+  "iterations": 2,
+  "token_budget": 8192,
+  "temperature": 0.2,
+  "models": {
+    "qwen2.5:1.5b-instruct": {
+      "name": "qwen2.5:1.5b-instruct",
+      "model": "qwen2.5:1.5b-instruct",
+      "modified_at": "2026-08-02T12:24:37.414503251-05:00",
+      "size": 986061892,
+      "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "1.5B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 32768,
+        "embedding_length": 1536,
+        "runner": "ggml"
+      },
+      "capabilities": [
+        "completion",
+        "tools"
+      ]
+    },
+    "gemma2:2b": {
+      "name": "gemma2:2b",
+      "model": "gemma2:2b",
+      "modified_at": "2026-10-22T19:27:57.947209793-05:00",
+      "size": 1629518495,
+      "digest": "8ccf136fdd5298f3ffe2d69862750ea7fb56555fa4d5b18c04e3fa4d82ee09d7",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "gemma2",
+        "families": [
+          "gemma2"
+        ],
+        "parameter_size": "2.6B",
+        "quantization_level": "Q4_0",
+        "context_length": 8192,
+        "embedding_length": 2304,
+        "runner": "ggml"
+      },
+      "capabilities": [
+        "completion"
+      ]
+    }
+  },
+  "runs": [
+    {
+      "model": "qwen2.5:1.5b-instruct",
+      "repetition": 1,
+      "started_at_utc": "2026-11-07T13:56:51.794902+00:00",
+      "wall_seconds": 12.77,
+      "events": [
+        {
+          "event": "run_started",
+          "data": {
+            "model": "qwen2.5:1.5b-instruct",
+            "domain": "WorkBuddy",
+            "maxIterations": 2,
+            "tokenBudget": 8192,
+            "evaluation": "same-model-judge"
+          }
+        },
+        {
+          "event": "baseline",
+          "data": {
+            "testCase": 1,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "1. **Prioritize Next Actions:**\n   - **Accessibility Testing:** Immediate focus to ensure the prototype can be accessed by all team members without technical issues.\n   - **Deployment Testing:** Conduct a basic deployment test to confirm the prototype can be easily and reliably launched.\n   - **Prototype Refinement:** Begin refining the prototype based on feedback from accessibility and deployment tests.\n\n2. **Known vs. Unknown:**\n   - Known: Prototype exists, engineers available, no confirmed budget"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 102,
+            "completionTokens": 96,
+            "latencyMs": 8071,
+            "totalTokens": 198
+          }
+        },
+        {
+          "event": "baseline",
+          "data": {
+            "testCase": 2,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "1. **Prioritize Next Actions:**\n   - **Accessibility and Deployment Testing:** Essential for public demo, but not yet tested.\n   - **Prototype Accessibility:** Known to be accessible, but deployment issues need further investigation.\n   - **Engineers Availability:** Available today, but no confirmed budget.\n\n2. **Known Facts vs. Unknowns:**\n   - Known: Prototype exists, engineers available.\n   - Unknown: Accessibility and deployment testing not yet completed, budget not confirmed"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 128,
+            "completionTokens": 96,
+            "latencyMs": 1298,
+            "totalTokens": 422
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 1,
+            "component": "system_prompt",
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\n  \"component\": \"tool_guidance\",\n  \"instruction\": \"Identify the key features and functionalities of the public demo prototype that need to be tested for accessibility and deployment. Prioritize these features based on their importance and potential impact on the overall presentation. Develop a list of three prioritized next actions that will help ensure the prototype is ready for a public demo on Friday. This includes actions such as testing the prototype on different devices, verifying compatibility with the target audience, and ensuring the deployment process is smooth and user-friendly. Additionally, outline what is known versus unknown about the current state of"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 227,
+            "completionTokens": 120,
+            "latencyMs": 1817,
+            "totalTokens": 769
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\n  \"component\": \"tool_guidance\",\n  \"instruction\": \"Identify the key features and functionalities of the prototype that need to be tested for accessibility and deployment. Prioritize these features based on their importance and urgency. Develop a plan to test each feature independently, focusing on the most critical ones first. This will help ensure that the final product is fully functional and accessible before the public demo.\",\n  \"reason\": \"This instruction provides a clear, actionable plan for testing the prototype's accessibility and deployment, addressing the current lack of testing and budget. It prioritizes the most critical features,"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 227,
+            "completionTokens": 120,
+            "latencyMs": 1580,
+            "totalTokens": 1116
+          }
+        },
+        {
+          "event": "error",
+          "data": {
+            "message": "The model produced an invalid harness proposal: Unterminated string starting at: line 4 column 13 (char 448)"
+          }
+        }
+      ]
+    },
+    {
+      "model": "qwen2.5:1.5b-instruct",
+      "repetition": 2,
+      "started_at_utc": "2026-11-07T13:57:04.566916+00:00",
+      "wall_seconds": 19.0,
+      "events": [
+        {
+          "event": "run_started",
+          "data": {
+            "model": "qwen2.5:1.5b-instruct",
+            "domain": "WorkBuddy",
+            "maxIterations": 2,
+            "tokenBudget": 8192,
+            "evaluation": "same-model-judge"
+          }
+        },
+        {
+          "event": "baseline",
+          "data": {
+            "testCase": 1,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "1. **Accessibility Testing**: Conduct initial accessibility testing to ensure the prototype is usable by a wide range of users. Known: Prototype exists; Unknown: Accessibility issues not tested.\n2. **Deployment Testing**: Perform basic deployment testing to confirm the prototype can be easily and reliably deployed. Known: Prototype exists; Unknown: Deployment issues not tested.\n3. **Risk Assessment**: Identify the risk of not having a confirmed budget for further testing and deployment. Known: Two engineers available; Unknown"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 102,
+            "completionTokens": 96,
+            "latencyMs": 1313,
+            "totalTokens": 198
+          }
+        },
+        {
+          "event": "baseline",
+          "data": {
+            "testCase": 2,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "**Next Actions:**\n1. **Accessibility Testing**: Conduct initial accessibility testing to ensure the prototype is usable by all users.\n2. **Deployment Testing**: Perform basic deployment testing to confirm the prototype can be easily and safely installed.\n3. **Prototype Review**: Review the prototype with the team to gather feedback and make necessary adjustments.\n\n**Known Facts:**\n- Prototype exists.\n- Two engineers available.\n- No confirmed budget.\n\n**Unknown Facts:**\n- Accessibility and deployment have not"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 128,
+            "completionTokens": 96,
+            "latencyMs": 1263,
+            "totalTokens": 422
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 1,
+            "component": "system_prompt",
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\n  \"component\": \"tool_guidance\",\n  \"instruction\": \"Identify the key features and functionalities of the public demo prototype that need to be tested for accessibility and deployment. Prioritize these based on criticality and urgency. Develop a detailed plan for the next steps, including the resources required, timelines, and potential risks. Ensure that the team has the necessary tools and expertise to execute the plan effectively.\",\n  \"reason\": \"This instruction provides a clear, actionable plan for the team to prioritize their efforts, identify potential risks, and ensure that the public demo is ready for Friday. It"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 227,
+            "completionTokens": 120,
+            "latencyMs": 1787,
+            "totalTokens": 769
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\n  \"component\": \"tool_guidance\",\n  \"instruction\": \"Identify the key features and functionalities that need to be demonstrated in the public demo. Prioritize the tasks based on their importance and urgency. For each task, determine what is known and unknown, and identify any potential risks.\",\n  \"reason\": \"This instruction helps the team focus on the most critical aspects of the demo, ensuring that the presentation is effective and engaging. It also provides a clear roadmap for addressing any unknowns and mitigating potential risks, which is crucial for a successful public demo.\"\n}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 227,
+            "completionTokens": 117,
+            "latencyMs": 1573,
+            "totalTokens": 1113
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 1,
+            "component": "tool_guidance",
+            "instruction": "Identify the key features and functionalities that need to be demonstrated in the public demo. Prioritize the tasks based on their importance and urgency. For each task, determine what is known and unknown, and identify any potential risks.",
+            "reason": "This instruction helps the team focus on the most critical aspects of the demo, ensuring that the presentation is effective and engaging. It also provides a clear roadmap for addressing any unknowns and mitigating potential risks, which is crucial for a successful public demo.",
+            "status": "ready"
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "testCase": 1,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "1. **Accessibility Testing**: Prioritize testing the prototype's accessibility for users with disabilities. Known: Prototype exists; Unknown: Accessibility issues not tested. Risk: Incomplete testing could lead to a suboptimal user experience.\n\n2. **Deployment Preparation**: Prioritize preparing the prototype for deployment. Known: Prototype exists; Unknown: Deployment process not tested. Risk: Deployment issues could prevent the demo from being successful.\n\n3. **Engineer Availability Check**: Prioritize checking the availability"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 147,
+            "completionTokens": 96,
+            "latencyMs": 1317,
+            "totalTokens": 1356
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "testCase": 2,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "### Prioritized Next Actions\n\n1. **Accessibility Testing**: Conduct initial accessibility testing to ensure the prototype is usable by people with disabilities. **Known**: Prototype is accessible; **Unknown**: No confirmed budget; **Risk**: Limited resources could delay testing.\n   \n2. **Deployment Testing**: Perform a basic deployment test to ensure the prototype can be easily and reliably deployed. **Known**: Prototype can be deployed; **Unknown**: No confirmed budget; **Risk**: Limited resources could delay deployment"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 173,
+            "completionTokens": 96,
+            "latencyMs": 1439,
+            "totalTokens": 1625
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "status": "judging",
+            "evaluation": "same-model-judge"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\"base_scores\": [85, 80], \"candidate_scores\": [90, 85], \"rationale\": \"Candidate version is more specific and prioritizes accessibility testing, which is crucial for ensuring the prototype is usable by a wide range of users.\"}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 854,
+            "completionTokens": 58,
+            "latencyMs": 1802,
+            "totalTokens": 2537
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "baseScores": [
+              85,
+              80
+            ],
+            "candidateScores": [
+              90,
+              85
+            ],
+            "baseScore": 82.5,
+            "candidateScore": 87.5,
+            "deltaScore": 5.0,
+            "accepted": true,
+            "rationale": "Candidate version is more specific and prioritizes accessibility testing, which is crucial for ensuring the prototype is usable by a wide range of users.",
+            "status": "complete"
+          }
+        },
+        {
+          "event": "compose",
+          "data": {
+            "iteration": 1,
+            "component": "tool_guidance",
+            "instruction": "Identify the key features and functionalities that need to be demonstrated in the public demo. Prioritize the tasks based on their importance and urgency. For each task, determine what is known and unknown, and identify any potential risks.",
+            "accepted": true,
+            "harness": [
+              "Identify the key features and functionalities that need to be demonstrated in the public demo. Prioritize the tasks based on their importance and urgency. For each task, determine what is known and unknown, and identify any potential risks."
+            ],
+            "status": "complete"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "1. **Accessibility Testing**: Prioritize testing the prototype's accessibility features to ensure it meets user needs. Known: Prototype exists; Unknown: Accessibility testing has not been performed. Risk: Incomplete testing could lead to usability issues.\n\n2. **Deployment Preparation**: Prioritize preparing the deployment plan to ensure smooth implementation. Known: Prototype exists; Unknown: Deployment details are not finalized. Risk: Incomplete deployment could result in system instability.\n\n3. **Engineer Availability**: Prioritize"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 147,
+            "completionTokens": 96,
+            "latencyMs": 1392,
+            "totalTokens": 2780
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "### Prioritized Next Actions:\n\n1. **Accessibility Testing**: Conduct initial accessibility testing to ensure the prototype is usable by people with disabilities. Known: Prototype exists; Unknown: Accessibility issues not yet identified. Risk: Potential usability problems that could delay the demo.\n\n2. **Deployment Testing**: Perform basic deployment testing to confirm the prototype can be easily and reliably deployed. Known: Prototype exists; Unknown: Deployment process not yet tested. Risk: Deployment issues could prevent the demo from being shown"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 173,
+            "completionTokens": 96,
+            "latencyMs": 1503,
+            "totalTokens": 3049
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 2,
+            "component": "system_prompt",
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\n  \"component\": \"tool_guidance\",\n  \"instruction\": \"Prioritize the key features and functionalities for the public demo based on importance and urgency. Identify what is known and unknown about each task, and assess any potential risks.\",\n  \"reason\": \"This instruction provides a clear, actionable plan for the team to focus on the most critical aspects of the demo, ensuring that the presentation is both informative and effective. It also helps in identifying areas that may require additional resources or testing, which can be addressed in the future.\"\n}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 272,
+            "completionTokens": 109,
+            "latencyMs": 1556,
+            "totalTokens": 3430
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 2,
+            "component": "tool_guidance",
+            "instruction": "Prioritize the key features and functionalities for the public demo based on importance and urgency. Identify what is known and unknown about each task, and assess any potential risks.",
+            "reason": "This instruction provides a clear, actionable plan for the team to focus on the most critical aspects of the demo, ensuring that the presentation is both informative and effective. It also helps in identifying areas that may require additional resources or testing, which can be addressed in the future.",
+            "status": "ready"
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 2,
+            "testCase": 1,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "1. **Accessibility Testing**: Known: Prototype is functional. Unknown: Accessibility issues not yet identified. Risk: Potential usability problems affecting user experience.\n2. **Deployment Testing**: Known: Prototype is functional. Unknown: Deployment process not tested. Risk: Deployment issues could prevent public demo.\n3. **Engineer Availability**: Known: Two engineers available. Unknown: No confirmed budget. Risk: Lack of resources could delay demo.\n\nNext actions:\n1. Conduct accessibility testing to ensure the"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 180,
+            "completionTokens": 96,
+            "latencyMs": 1446,
+            "totalTokens": 3706
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 2,
+            "testCase": 2,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "1. **Accessibility Testing**: Known: Prototype is accessible. Unknown: Deployment is not tested. Risk: Deployment issues could prevent public demo.\n2. **Deployment Testing**: Known: Deployment is not tested. Unknown: Accessibility is known. Risk: Deployment issues could prevent public demo.\n3. **Prototype Refinement**: Known: Prototype exists. Unknown: Accessibility and deployment are not tested. Risk: Prototype may not meet public expectations.\n\nNext actions:\n1. Conduct accessibility testing.\n2"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 206,
+            "completionTokens": 96,
+            "latencyMs": 1306,
+            "totalTokens": 4008
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 2,
+            "status": "judging",
+            "evaluation": "same-model-judge"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\n  \"base_scores\": [85, 80],\n  \"candidate_scores\": [90, 85],\n  \"rationale\": \"Candidate version is more specific and detailed, providing a clear risk assessment and prioritization of actions.\"\n}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 855,
+            "completionTokens": 54,
+            "latencyMs": 1289,
+            "totalTokens": 4917
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 2,
+            "baseScores": [
+              85,
+              80
+            ],
+            "candidateScores": [
+              90,
+              85
+            ],
+            "baseScore": 82.5,
+            "candidateScore": 87.5,
+            "deltaScore": 5.0,
+            "accepted": true,
+            "rationale": "Candidate version is more specific and detailed, providing a clear risk assessment and prioritization of actions.",
+            "status": "complete"
+          }
+        },
+        {
+          "event": "compose",
+          "data": {
+            "iteration": 2,
+            "component": "tool_guidance",
+            "instruction": "Prioritize the key features and functionalities for the public demo based on importance and urgency. Identify what is known and unknown about each task, and assess any potential risks.",
+            "accepted": true,
+            "harness": [
+              "Identify the key features and functionalities that need to be demonstrated in the public demo. Prioritize the tasks based on their importance and urgency. For each task, determine what is known and unknown, and identify any potential risks.",
+              "Prioritize the key features and functionalities for the public demo based on importance and urgency. Identify what is known and unknown about each task, and assess any potential risks."
+            ],
+            "status": "complete"
+          }
+        },
+        {
+          "event": "completed",
+          "data": {
+            "model": "qwen2.5:1.5b-instruct",
+            "domain": "WorkBuddy",
+            "baseOutput": "1. **Accessibility Testing**: Conduct initial accessibility testing to ensure the prototype is usable by a wide range of users. Known: Prototype exists; Unknown: Accessibility issues not tested.\n2. **Deployment Testing**: Perform basic deployment testing to confirm the prototype can be easily and reliably deployed. Known: Prototype exists; Unknown: Deployment issues not tested.\n3. **Risk Assessment**: Identify the risk of not having a confirmed budget for further testing and deployment. Known: Two engineers available; Unknown",
+            "optimizedOutput": "1. **Accessibility Testing**: Known: Prototype is functional. Unknown: Accessibility issues not yet identified. Risk: Potential usability problems affecting user experience.\n2. **Deployment Testing**: Known: Prototype is functional. Unknown: Deployment process not tested. Risk: Deployment issues could prevent public demo.\n3. **Engineer Availability**: Known: Two engineers available. Unknown: No confirmed budget. Risk: Lack of resources could delay demo.\n\nNext actions:\n1. Conduct accessibility testing to ensure the",
+            "harness": [
+              "Identify the key features and functionalities that need to be demonstrated in the public demo. Prioritize the tasks based on their importance and urgency. For each task, determine what is known and unknown, and identify any potential risks.",
+              "Prioritize the key features and functionalities for the public demo based on importance and urgency. Identify what is known and unknown about each task, and assess any potential risks."
+            ],
+            "finalJudgeScore": 87.5,
+            "totalImprovement": 87.5,
+            "acceptedIterations": 2,
+            "metrics": {
+              "promptTokens": 3691,
+              "completionTokens": 1226,
+              "totalTokens": 4917,
+              "latencyMs": 18986,
+              "iterations": 2
+            },
+            "evaluation": "same-model-judge"
+          }
+        }
+      ]
+    },
+    {
+      "model": "qwen2.5:1.5b-instruct",
+      "repetition": 3,
+      "started_at_utc": "2026-11-07T13:57:23.563124+00:00",
+      "wall_seconds": 16.39,
+      "events": [
+        {
+          "event": "run_started",
+          "data": {
+            "model": "qwen2.5:1.5b-instruct",
+            "domain": "WorkBuddy",
+            "maxIterations": 2,
+            "tokenBudget": 8192,
+            "evaluation": "same-model-judge"
+          }
+        },
+        {
+          "event": "baseline",
+          "data": {
+            "testCase": 1,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "1. **Prioritize Next Actions:**\n   - **Accessibility Testing:** Immediate priority to ensure the prototype can be accessed easily by all team members.\n   - **Deployment Testing:** Next step to confirm the prototype can be deployed without technical issues.\n   - **Prototype Refinement:** Prioritize refining the prototype based on feedback from accessibility and deployment tests.\n\n2. **Known vs. Unknown:**\n   - **Known:** Prototype exists, engineers available, no confirmed budget.\n   -"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 102,
+            "completionTokens": 96,
+            "latencyMs": 1259,
+            "totalTokens": 198
+          }
+        },
+        {
+          "event": "baseline",
+          "data": {
+            "testCase": 2,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "1. **Action**: Conduct a quick accessibility and deployment test with the two engineers available today.\n   - **Known**: Prototype exists.\n   - **Unknown**: Testing has not been completed.\n   - **Risk**: Potential issues could arise if the prototype is not accessible or deployable.\n\n2. **Action**: Schedule a meeting with the two engineers to discuss the next steps and finalize the demo plan.\n   - **Known**: Prototype exists.\n   - **Unknown**: Testing has not"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 128,
+            "completionTokens": 96,
+            "latencyMs": 1339,
+            "totalTokens": 422
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 1,
+            "component": "system_prompt",
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\n  \"component\": \"tool_guidance\",\n  \"instruction\": \"Identify the key features and functionalities of the public demo prototype that need to be tested for accessibility and deployment. Prioritize these based on criticality and urgency. Develop a plan to test these features, including the resources and timeline needed. Ensure to communicate the plan to the two engineers available today.\",\n  \"reason\": \"This instruction provides a clear roadmap for the team to prioritize their efforts, ensuring that the most important aspects of the demo are tested first. It also helps in identifying the resources and timeline needed, which is crucial"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 227,
+            "completionTokens": 120,
+            "latencyMs": 1674,
+            "totalTokens": 769
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\n  \"component\": \"tool_guidance\",\n  \"instruction\": \"Prioritize the next steps for the public demo preparation based on the current state of the prototype and the available resources. Identify the unknowns and risks associated with the accessibility and deployment testing, and outline a plan to address these issues.\",\n  \"reason\": \"This instruction provides a clear and actionable way to prioritize tasks, identify unknowns, and recognize risks, ensuring that the team can effectively prepare for the demo while minimizing potential issues.\"\n}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 227,
+            "completionTokens": 103,
+            "latencyMs": 1385,
+            "totalTokens": 1099
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 1,
+            "component": "tool_guidance",
+            "instruction": "Prioritize the next steps for the public demo preparation based on the current state of the prototype and the available resources. Identify the unknowns and risks associated with the accessibility and deployment testing, and outline a plan to address these issues.",
+            "reason": "This instruction provides a clear and actionable way to prioritize tasks, identify unknowns, and recognize risks, ensuring that the team can effectively prepare for the demo while minimizing potential issues.",
+            "status": "ready"
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "testCase": 1,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "1. Conduct accessibility testing to ensure the prototype is usable for all users.\n2. Perform deployment testing to confirm the prototype can be easily and safely accessed by the public.\n3. Develop a detailed plan for public demo preparation, including signage, timing, and any necessary setup or equipment.\n\nKnown: Prototype exists, engineers available.\nUnknown: Accessibility and deployment testing have not been completed.\nRisk: Public demonstration may fail due to untested accessibility and deployment issues."
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 148,
+            "completionTokens": 92,
+            "latencyMs": 1342,
+            "totalTokens": 1339
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "testCase": 2,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "1. **Accessibility Testing**: Conduct a preliminary accessibility test to ensure the prototype is usable by all users, including those with disabilities. This is known but needs to be confirmed with the engineers.\n\n2. **Deployment Testing**: Perform a basic deployment test to ensure the prototype can be easily and securely accessed by the public. This is known but requires confirmation from the IT team.\n\n3. **Engagement Plan**: Develop a detailed engagement plan for the public demo, including a schedule, target"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 174,
+            "completionTokens": 96,
+            "latencyMs": 1316,
+            "totalTokens": 1609
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "status": "judging",
+            "evaluation": "same-model-judge"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\n  \"base_scores\": [85, 80],\n  \"candidate_scores\": [90, 85],\n  \"rationale\": \"The candidate version is more detailed and specific, providing clear actions and risks, which aligns better with the task's requirements.\"\n}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 849,
+            "completionTokens": 60,
+            "latencyMs": 1204,
+            "totalTokens": 2518
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "baseScores": [
+              85,
+              80
+            ],
+            "candidateScores": [
+              90,
+              85
+            ],
+            "baseScore": 82.5,
+            "candidateScore": 87.5,
+            "deltaScore": 5.0,
+            "accepted": true,
+            "rationale": "The candidate version is more detailed and specific, providing clear actions and risks, which aligns better with the task's requirements.",
+            "status": "complete"
+          }
+        },
+        {
+          "event": "compose",
+          "data": {
+            "iteration": 1,
+            "component": "tool_guidance",
+            "instruction": "Prioritize the next steps for the public demo preparation based on the current state of the prototype and the available resources. Identify the unknowns and risks associated with the accessibility and deployment testing, and outline a plan to address these issues.",
+            "accepted": true,
+            "harness": [
+              "Prioritize the next steps for the public demo preparation based on the current state of the prototype and the available resources. Identify the unknowns and risks associated with the accessibility and deployment testing, and outline a plan to address these issues."
+            ],
+            "status": "complete"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "1. Conduct accessibility testing on Friday morning.\n2. Schedule a deployment test for Friday afternoon.\n3. Develop a risk mitigation plan for potential issues identified during testing.\n\nKnown: Prototype exists, engineers available.\nUnknown: Accessibility and deployment testing not yet completed.\nRisk: Uncertainty about the effectiveness of the prototype and potential issues with deployment."
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 148,
+            "completionTokens": 68,
+            "latencyMs": 912,
+            "totalTokens": 2734
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "1. Conduct accessibility testing on Friday morning.\n2. Schedule deployment testing for the following week.\n3. Address unknowns by reaching out to the designers for feedback and clarifications.\n\nKnown: Prototype exists, two engineers available, no confirmed budget.\nUnknown: Accessibility and deployment testing have not been completed, resources are limited.\nRisk: Lack of testing could lead to issues during the public demo."
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 174,
+            "completionTokens": 79,
+            "latencyMs": 1090,
+            "totalTokens": 2987
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 2,
+            "component": "system_prompt",
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\n  \"component\": \"tool_guidance\",\n  \"instruction\": \"Prioritize the next steps for the public demo preparation based on the current state of the prototype and the available resources. Identify the unknowns and risks associated with the accessibility and deployment testing, and outline a plan to address these issues.\",\n  \"reason\": \"This instruction provides a clear and actionable plan for the team to prioritize their tasks, identify unknowns and risks, and develop a strategy to address these issues, ensuring that the demo is ready and accessible for Friday.\"\n}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 273,
+            "completionTokens": 110,
+            "latencyMs": 1510,
+            "totalTokens": 3370
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 2,
+            "component": "tool_guidance",
+            "instruction": "Prioritize the next steps for the public demo preparation based on the current state of the prototype and the available resources. Identify the unknowns and risks associated with the accessibility and deployment testing, and outline a plan to address these issues.",
+            "reason": "This instruction provides a clear and actionable plan for the team to prioritize their tasks, identify unknowns and risks, and develop a strategy to address these issues, ensuring that the demo is ready and accessible for Friday.",
+            "status": "ready"
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 2,
+            "testCase": 1,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "1. Conduct accessibility testing to ensure the prototype is usable by all users.\n2. Perform deployment testing to confirm the prototype works on the intended platforms.\n3. Develop a detailed plan for the public demo, including a schedule and list of materials needed.\n\nKnown: Prototype exists, two engineers available.\nUnknown: Accessibility and deployment testing have not been completed.\nRisk: Failure to test could lead to a suboptimal public demo."
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 194,
+            "completionTokens": 86,
+            "latencyMs": 1332,
+            "totalTokens": 3650
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 2,
+            "testCase": 2,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "1. Conduct accessibility testing to ensure the prototype is usable by all users.\n2. Perform deployment testing to confirm the prototype can be easily and safely accessed by the public.\n3. Address any identified risks by creating a contingency plan, such as having a backup team ready to assist in case of unforeseen issues."
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 220,
+            "completionTokens": 63,
+            "latencyMs": 866,
+            "totalTokens": 3933
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 2,
+            "status": "judging",
+            "evaluation": "same-model-judge"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\n  \"base_scores\": [85, 80],\n  \"candidate_scores\": [90, 88],\n  \"rationale\": \"Candidate output is more detailed and provides a clear risk mitigation plan, which aligns better with the task's domain requirements.\"\n}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 761,
+            "completionTokens": 59,
+            "latencyMs": 1151,
+            "totalTokens": 4753
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 2,
+            "baseScores": [
+              85,
+              80
+            ],
+            "candidateScores": [
+              90,
+              88
+            ],
+            "baseScore": 82.5,
+            "candidateScore": 89.0,
+            "deltaScore": 6.5,
+            "accepted": true,
+            "rationale": "Candidate output is more detailed and provides a clear risk mitigation plan, which aligns better with the task's domain requirements.",
+            "status": "complete"
+          }
+        },
+        {
+          "event": "compose",
+          "data": {
+            "iteration": 2,
+            "component": "tool_guidance",
+            "instruction": "Prioritize the next steps for the public demo preparation based on the current state of the prototype and the available resources. Identify the unknowns and risks associated with the accessibility and deployment testing, and outline a plan to address these issues.",
+            "accepted": true,
+            "harness": [
+              "Prioritize the next steps for the public demo preparation based on the current state of the prototype and the available resources. Identify the unknowns and risks associated with the accessibility and deployment testing, and outline a plan to address these issues.",
+              "Prioritize the next steps for the public demo preparation based on the current state of the prototype and the available resources. Identify the unknowns and risks associated with the accessibility and deployment testing, and outline a plan to address these issues."
+            ],
+            "status": "complete"
+          }
+        },
+        {
+          "event": "completed",
+          "data": {
+            "model": "qwen2.5:1.5b-instruct",
+            "domain": "WorkBuddy",
+            "baseOutput": "1. **Prioritize Next Actions:**\n   - **Accessibility Testing:** Immediate priority to ensure the prototype can be accessed easily by all team members.\n   - **Deployment Testing:** Next step to confirm the prototype can be deployed without technical issues.\n   - **Prototype Refinement:** Prioritize refining the prototype based on feedback from accessibility and deployment tests.\n\n2. **Known vs. Unknown:**\n   - **Known:** Prototype exists, engineers available, no confirmed budget.\n   -",
+            "optimizedOutput": "1. Conduct accessibility testing to ensure the prototype is usable by all users.\n2. Perform deployment testing to confirm the prototype works on the intended platforms.\n3. Develop a detailed plan for the public demo, including a schedule and list of materials needed.\n\nKnown: Prototype exists, two engineers available.\nUnknown: Accessibility and deployment testing have not been completed.\nRisk: Failure to test could lead to a suboptimal public demo.",
+            "harness": [
+              "Prioritize the next steps for the public demo preparation based on the current state of the prototype and the available resources. Identify the unknowns and risks associated with the accessibility and deployment testing, and outline a plan to address these issues.",
+              "Prioritize the next steps for the public demo preparation based on the current state of the prototype and the available resources. Identify the unknowns and risks associated with the accessibility and deployment testing, and outline a plan to address these issues."
+            ],
+            "finalJudgeScore": 89.0,
+            "totalImprovement": 89.0,
+            "acceptedIterations": 2,
+            "metrics": {
+              "promptTokens": 3625,
+              "completionTokens": 1128,
+              "totalTokens": 4753,
+              "latencyMs": 16380,
+              "iterations": 2
+            },
+            "evaluation": "same-model-judge"
+          }
+        }
+      ]
+    },
+    {
+      "model": "gemma2:2b",
+      "repetition": 1,
+      "started_at_utc": "2026-11-07T13:57:39.963367+00:00",
+      "wall_seconds": 20.21,
+      "events": [
+        {
+          "event": "run_started",
+          "data": {
+            "model": "gemma2:2b",
+            "domain": "WorkBuddy",
+            "maxIterations": 2,
+            "tokenBudget": 8192,
+            "evaluation": "same-model-judge"
+          }
+        },
+        {
+          "event": "baseline",
+          "data": {
+            "testCase": 1,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Next Actions:\n\n1. **Accessibility Audit:**  (Known: Prototype exists) -  Assess accessibility using established guidelines (e.g., WCAG) to identify potential issues.\n2. **Deployment Setup:** (Unknown: Deployment environment, dependencies) -  Establish a basic deployment environment and identify dependencies.\n3. **Demo Script:** (Unknown: Demo content, audience) -  Develop a concise demo script outlining key features and functionalities.\n\n**Risk:**"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 100,
+            "completionTokens": 96,
+            "latencyMs": 1644,
+            "totalTokens": 196
+          }
+        },
+        {
+          "event": "baseline",
+          "data": {
+            "testCase": 2,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "##  Public Demo Prep: Action Plan\n\n**Prioritized Actions:**\n\n1. **Accessibility Testing (High):**  Engineers assess prototype's accessibility for users with disabilities. (Known: Prototype exists)\n2. **Deployment Testing (Medium):**  Engineers test deployment process and identify potential issues. (Known: Prototype exists)\n3. **Demo Script & Content (Low):**  Engineers draft a concise demo script and prepare supporting materials. (Unknown: Content"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 127,
+            "completionTokens": 96,
+            "latencyMs": 1598,
+            "totalTokens": 419
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 1,
+            "component": "system_prompt",
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\"type\": \"object\", \"properties\": {\"component\": \"system_prompt\", \"instruction\": \"Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment have not been tested.  The prototype exists, but budget and testing are not confirmed.  The team has two engineers available today.  State what is known versus unknown, and identify one risk.  Do not invent a budget or claim testing is complete.\", \"reason\": \"This instruction provides a clear, actionable prompt that encourages the agent to generate a prioritized list of actions"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 204,
+            "completionTokens": 120,
+            "latencyMs": 2237,
+            "totalTokens": 743
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\"type\": \"object\", \"properties\": {\"component\": \"tool_guidance\", \"instruction\": \"Generate a prioritized list of three actionable next steps for a small team preparing a public demo for Friday, considering the prototype's current state and limited resources. Include a clear statement of what is known and unknown, and identify one potential risk. Focus on actions that can be taken today.\", \"reason\": \"This instruction provides a clear framework for action, encourages prioritization, and explicitly addresses the constraints of limited resources and time. It also emphasizes the importance of identifying potential risks.\"}}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 204,
+            "completionTokens": 118,
+            "latencyMs": 2010,
+            "totalTokens": 1065
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 1,
+            "component": "tool_guidance",
+            "instruction": "Generate a prioritized list of three actionable next steps for a small team preparing a public demo for Friday, considering the prototype's current state and limited resources. Include a clear statement of what is known and unknown, and identify one potential risk. Focus on actions that can be taken today.",
+            "reason": "This instruction provides a clear framework for action, encourages prioritization, and explicitly addresses the constraints of limited resources and time. It also emphasizes the importance of identifying potential risks.",
+            "status": "ready"
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "testCase": 1,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Actionable Next Steps for Public Demo:\n\n**1.  Accessibility Testing (High Priority):**  Engineers will test prototype accessibility on a limited user base today.  \n**What is known:** Prototype exists, limited user base for testing.\n**What is unknown:**  Testing results, potential accessibility issues.\n**Risk:**  Unforeseen accessibility issues may impact demo and user confidence.\n\n**2.  Deployment Preparation (Medium Priority):**  Engineers will"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 158,
+            "completionTokens": 96,
+            "latencyMs": 1819,
+            "totalTokens": 1319
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "testCase": 2,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Actionable Next Steps for Public Demo (Friday)\n\n**Known:**\n* Prototype exists.\n* Two engineers available.\n\n**Unknown:**\n* Deployment and accessibility testing results.\n* Budget confirmation.\n\n**Potential Risk:**  Limited resources and time constraints may hinder successful demo execution.\n\n**Actions:**\n\n1. **(High Priority) Test Deployment & Accessibility:**  Engineers prioritize testing deployment and accessibility. (Dependency: Budget confirmation)\n2. **("
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 185,
+            "completionTokens": 96,
+            "latencyMs": 1656,
+            "totalTokens": 1600
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "status": "judging",
+            "evaluation": "same-model-judge"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\"base_scores\": [85, 80], \"candidate_scores\": [90, 85], \"rationale\": \"Candidate output demonstrates a more focused and actionable approach. It prioritizes testing and addresses the unknown factors more explicitly. Base output lacks the same level of detail and prioritization.\"}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 837,
+            "completionTokens": 67,
+            "latencyMs": 1885,
+            "totalTokens": 2504
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "baseScores": [
+              85,
+              80
+            ],
+            "candidateScores": [
+              90,
+              85
+            ],
+            "baseScore": 82.5,
+            "candidateScore": 87.5,
+            "deltaScore": 5.0,
+            "accepted": true,
+            "rationale": "Candidate output demonstrates a more focused and actionable approach. It prioritizes testing and addresses the unknown factors more explicitly. Base output lacks the same level of detail and prioritization.",
+            "status": "complete"
+          }
+        },
+        {
+          "event": "compose",
+          "data": {
+            "iteration": 1,
+            "component": "tool_guidance",
+            "instruction": "Generate a prioritized list of three actionable next steps for a small team preparing a public demo for Friday, considering the prototype's current state and limited resources. Include a clear statement of what is known and unknown, and identify one potential risk. Focus on actions that can be taken today.",
+            "accepted": true,
+            "harness": [
+              "Generate a prioritized list of three actionable next steps for a small team preparing a public demo for Friday, considering the prototype's current state and limited resources. Include a clear statement of what is known and unknown, and identify one potential risk. Focus on actions that can be taken today."
+            ],
+            "status": "complete"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Prioritized Next Steps for Public Demo:\n\n**1.  Accessibility Testing (High Priority):**  Engineers will test prototype's accessibility on various devices and screen readers. (Known: Prototype exists, Unknown:  Accessibility issues)\n**2.  Deployment Setup (Medium Priority):**  Engineers will set up a basic deployment environment for the prototype. (Known:  Prototype exists, Unknown:  Deployment environment details)\n**3.  Demo Script & Q"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 158,
+            "completionTokens": 96,
+            "latencyMs": 1598,
+            "totalTokens": 2758
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "##  Public Demo Prep: Actionable Next Steps\n\n**Known:**\n* Prototype exists.\n* Two engineers available.\n\n**Unknown:**\n* Deployment & accessibility testing status.\n* Budget confirmation.\n\n**Potential Risk:**  Limited resources and time pressure may hinder successful demo execution.\n\n**Prioritized Actions:**\n\n1. **(High Priority)  Accessibility & Deployment Testing (Today):**  Engineers test prototype deployment and accessibility.  \n2. **("
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 185,
+            "completionTokens": 96,
+            "latencyMs": 1619,
+            "totalTokens": 3039
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 2,
+            "component": "system_prompt",
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\"type\": \"object\", \"properties\": {\"component\": \"system_prompt\", \"instruction\": \"Generate a prioritized list of three actionable next steps for a small team preparing a public demo for Friday, considering the prototype's current state and limited resources. Include a clear statement of what is known and unknown, and identify one potential risk. Focus on actions that can be taken today.\", \"reason\": \"This instruction provides a clear prompt for the agent to generate actionable steps, including a statement of known and unknown information, and a potential risk. This will help the agent generate more focused and useful"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 261,
+            "completionTokens": 120,
+            "latencyMs": 2069,
+            "totalTokens": 3420
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\"type\": \"object\", \"properties\": {\"component\": \"system_prompt\", \"instruction\": \"Generate a prioritized list of three actionable next steps for a small team preparing a public demo for Friday, considering the prototype's current state and limited resources. Include a clear statement of what is known and unknown, and identify one potential risk. Focus on actions that can be taken today.\", \"reason\": \"This instruction provides a clear, actionable prompt that focuses on the specific task and desired output. It encourages the agent to prioritize actions and identify potential risks, leading to more effective and efficient task completion"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 261,
+            "completionTokens": 120,
+            "latencyMs": 2068,
+            "totalTokens": 3801
+          }
+        },
+        {
+          "event": "error",
+          "data": {
+            "message": "The model produced an invalid harness proposal: Unterminated string starting at: line 1 column 401 (char 400)"
+          }
+        }
+      ]
+    },
+    {
+      "model": "gemma2:2b",
+      "repetition": 2,
+      "started_at_utc": "2026-11-07T13:58:00.174625+00:00",
+      "wall_seconds": 17.99,
+      "events": [
+        {
+          "event": "run_started",
+          "data": {
+            "model": "gemma2:2b",
+            "domain": "WorkBuddy",
+            "maxIterations": 2,
+            "tokenBudget": 8192,
+            "evaluation": "same-model-judge"
+          }
+        },
+        {
+          "event": "baseline",
+          "data": {
+            "testCase": 1,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Next Actions:\n\n1. **Accessibility Audit:**  (Known: Prototype exists) -  Assess accessibility using standard guidelines (WCAG) and identify potential issues.\n2. **Deployment Setup:** (Unknown: Deployment specifics) -  Establish basic deployment infrastructure and identify potential challenges.\n3. **Demo Script:** (Unknown: Demo content) -  Develop a concise demo script outlining key features and functionality.\n\n**Risk:**  Deployment issues may arise due to unknown"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 100,
+            "completionTokens": 96,
+            "latencyMs": 1601,
+            "totalTokens": 196
+          }
+        },
+        {
+          "event": "baseline",
+          "data": {
+            "testCase": 2,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "##  Public Demo Prep: Action Plan\n\n**Known:** \n* Prototype exists.\n* Two engineers available.\n* Friday demo is the target.\n\n**Unknown:** \n* Accessibility & deployment testing status.\n* Budget confirmation.\n\n**Prioritized Actions:**\n\n1. **Accessibility & Deployment Testing (High):**  Engineers test prototype for accessibility and deployment.  \n2. **Demo Script & Content (Medium):**  Engineers draft a demo script"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 127,
+            "completionTokens": 96,
+            "latencyMs": 1612,
+            "totalTokens": 419
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 1,
+            "component": "system_prompt",
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\"type\": \"object\", \"properties\": {\"component\": \"system_prompt\", \"instruction\": \"Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment limitations.  Clearly state what is known and unknown, and identify one potential risk. Do not invent a budget or claim testing is complete.\", \"reason\": \"This instruction provides a clear framework for the agent to generate actionable steps, address the specific constraints of the task, and identify potential risks. It encourages the agent to focus on concrete actions and avoid speculative claims.\"}}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 204,
+            "completionTokens": 120,
+            "latencyMs": 2085,
+            "totalTokens": 743
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 1,
+            "component": "system_prompt",
+            "instruction": "Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment limitations.  Clearly state what is known and unknown, and identify one potential risk. Do not invent a budget or claim testing is complete.",
+            "reason": "This instruction provides a clear framework for the agent to generate actionable steps, address the specific constraints of the task, and identify potential risks. It encourages the agent to focus on concrete actions and avoid speculative claims.",
+            "status": "ready"
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "testCase": 1,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Next Actions for Public Demo:\n\n**1.  Accessibility Testing (High Priority):**  \n* **Known:** Prototype exists, limited deployment knowledge.\n* **Unknown:**  Accessibility features, deployment limitations, potential user feedback.\n* **Action:**  Engineers test prototype's accessibility using assistive technologies and common accessibility guidelines.\n\n**2.  Deployment Optimization (Medium Priority):** \n* **Known:**  Limited deployment knowledge. \n* **"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 153,
+            "completionTokens": 96,
+            "latencyMs": 1740,
+            "totalTokens": 992
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "testCase": 2,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Next Actions for Public Demo:\n\n**Known:**\n* Prototype exists.\n* Friday demo is scheduled.\n* Two engineers available.\n\n**Unknown:**\n* Accessibility and deployment limitations.\n* Budget allocation.\n* Testing results.\n\n**Potential Risk:**\n* Insufficient testing could lead to technical issues during the demo, impacting audience perception and team morale.\n\n**Prioritized Actions:**\n\n1. **Accessibility Testing:**  (Dependency: Unknown) -  "
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 180,
+            "completionTokens": 96,
+            "latencyMs": 1683,
+            "totalTokens": 1268
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "status": "judging",
+            "evaluation": "same-model-judge"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\"base_scores\": [85, 80], \"candidate_scores\": [90, 85], \"rationale\": \"Candidate output demonstrates a more thorough understanding of the task's requirements and prioritizes actions based on dependencies. It also includes a clear risk assessment and prioritizes actions based on urgency and dependencies.\"}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 837,
+            "completionTokens": 71,
+            "latencyMs": 1851,
+            "totalTokens": 2176
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "baseScores": [
+              85,
+              80
+            ],
+            "candidateScores": [
+              90,
+              85
+            ],
+            "baseScore": 82.5,
+            "candidateScore": 87.5,
+            "deltaScore": 5.0,
+            "accepted": true,
+            "rationale": "Candidate output demonstrates a more thorough understanding of the task's requirements and prioritizes actions based on dependencies. It also includes a clear risk assessment and prioritizes actions based on urgency and dependencies.",
+            "status": "complete"
+          }
+        },
+        {
+          "event": "compose",
+          "data": {
+            "iteration": 1,
+            "component": "system_prompt",
+            "instruction": "Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment limitations.  Clearly state what is known and unknown, and identify one potential risk. Do not invent a budget or claim testing is complete.",
+            "accepted": true,
+            "harness": [
+              "Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment limitations.  Clearly state what is known and unknown, and identify one potential risk. Do not invent a budget or claim testing is complete."
+            ],
+            "status": "complete"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Prioritized Next Actions for Public Demo:\n\n**1. Accessibility Testing (High Priority):**  \n* **Known:** Prototype exists, but no accessibility testing has been conducted.\n* **Unknown:**  Specific accessibility requirements, potential barriers, and impact on deployment.\n* **Action:**  Engineer 1 & 2 conduct accessibility testing using established guidelines (WCAG, etc.) and document findings.\n\n**2. Deployment Testing (Medium Priority):**  \n"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 153,
+            "completionTokens": 96,
+            "latencyMs": 1615,
+            "totalTokens": 2425
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Next Actions for Public Demo:\n\n**Known:**\n* Prototype exists.\n* Friday demo is planned.\n* Two engineers available.\n\n**Unknown:**\n* Accessibility and deployment limitations.\n* Budget for demo.\n* Testing results.\n\n**Potential Risk:**  \n* Deployment issues due to unknown limitations, leading to a delayed or unsuccessful demo.\n\n**Prioritized Actions:**\n\n1. **Accessibility Testing (Dependency: Unknown):**  Assess accessibility of"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 180,
+            "completionTokens": 96,
+            "latencyMs": 1658,
+            "totalTokens": 2701
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 2,
+            "component": "system_prompt",
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\"type\": \"object\", \"properties\": {\"component\": \"system_prompt\", \"instruction\": \"Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment limitations. Clearly state what is known and unknown, and identify one potential risk. Do not invent a budget or claim testing is complete.\", \"reason\": \"This instruction directly asks for the specific information needed to prioritize actions and identify risks, while also ensuring the agent considers the limitations of the prototype and the team's resources. This will improve the agent's ability to generate"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 256,
+            "completionTokens": 120,
+            "latencyMs": 2082,
+            "totalTokens": 3077
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\"type\": \"object\", \"properties\": {\"component\": \"system_prompt\", \"instruction\": \"Based on the provided task, generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment limitations. Clearly state what is known and unknown, and identify one potential risk. Do not invent a budget or claim testing is complete.\", \"reason\": \"This instruction directly addresses the task's requirements by asking for a prioritized list, specifying the context, and explicitly prohibiting budget claims and testing completion. This will encourage the agent to focus on actionable"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 256,
+            "completionTokens": 120,
+            "latencyMs": 2053,
+            "totalTokens": 3453
+          }
+        },
+        {
+          "event": "error",
+          "data": {
+            "message": "The model produced an invalid harness proposal: Unterminated string starting at: line 1 column 409 (char 408)"
+          }
+        }
+      ]
+    },
+    {
+      "model": "gemma2:2b",
+      "repetition": 3,
+      "started_at_utc": "2026-11-07T13:58:18.163443+00:00",
+      "wall_seconds": 23.86,
+      "events": [
+        {
+          "event": "run_started",
+          "data": {
+            "model": "gemma2:2b",
+            "domain": "WorkBuddy",
+            "maxIterations": 2,
+            "tokenBudget": 8192,
+            "evaluation": "same-model-judge"
+          }
+        },
+        {
+          "event": "baseline",
+          "data": {
+            "testCase": 1,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Next Actions:\n\n1. **Accessibility Audit:**  (Known: Prototype exists) -  Assess accessibility using established guidelines (e.g., WCAG). \n2. **Deployment Setup:** (Unknown: Deployment process) -  Set up a basic deployment environment for initial testing.\n3. **Demo Script:** (Unknown: Demo content) -  Develop a concise demo script outlining key features and functionality.\n\n**Risk:**  Limited resources and time may hinder"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 100,
+            "completionTokens": 96,
+            "latencyMs": 1611,
+            "totalTokens": 196
+          }
+        },
+        {
+          "event": "baseline",
+          "data": {
+            "testCase": 2,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "##  Public Demo Prep: Action Plan\n\n**Prioritized Actions:**\n\n1. **Accessibility Testing (High):**  Engineers assess prototype's accessibility.  (Known: Prototype exists, Unknown: Accessibility issues)\n2. **Deployment Testing (Medium):** Engineers test basic deployment functionality. (Known: Prototype exists, Unknown: Deployment issues)\n3. **Demo Script & Content (Low):** Engineers draft a concise demo script and content. (Known: Prototype"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 127,
+            "completionTokens": 96,
+            "latencyMs": 1603,
+            "totalTokens": 419
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 1,
+            "component": "system_prompt",
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\"type\": \"object\", \"properties\": {\"component\": \"system_prompt\", \"instruction\": \"Analyze the current state of the prototype and its accessibility.  Prioritize three actions for the team to take today, focusing on the most impactful steps for Friday's demo.  Identify what is known and unknown about the prototype's deployment and accessibility.  Finally, identify one potential risk.\", \"reason\": \"This instruction encourages the agent to perform a thorough analysis of the prototype's current state, leading to more informed prioritization and risk assessment. This will improve the agent's ability"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 204,
+            "completionTokens": 120,
+            "latencyMs": 2022,
+            "totalTokens": 743
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\"type\": \"object\", \"properties\": {\"component\": \"system_prompt\", \"instruction\": \"Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment have not been tested. The prototype exists, but budget and testing are not confirmed.  Include what is known versus unknown, and identify one potential risk.\", \"reason\": \"This instruction provides a clear, actionable prompt that encourages the agent to prioritize actions, consider unknowns, and identify potential risks. This will improve the agent's ability to generate comprehensive and realistic recommendations.\"}}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 204,
+            "completionTokens": 120,
+            "latencyMs": 2159,
+            "totalTokens": 1067
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 1,
+            "component": "system_prompt",
+            "instruction": "Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment have not been tested. The prototype exists, but budget and testing are not confirmed.  Include what is known versus unknown, and identify one potential risk.",
+            "reason": "This instruction provides a clear, actionable prompt that encourages the agent to prioritize actions, consider unknowns, and identify potential risks. This will improve the agent's ability to generate comprehensive and realistic recommendations.",
+            "status": "ready"
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "testCase": 1,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Prioritized Next Actions for Public Demo:\n\n**1.  Accessibility & Deployment Testing (High Priority):**  \n    * **Known:** Prototype exists.\n    * **Unknown:**  Testing results, budget, and deployment feasibility.\n    * **Risk:**  Demo failure due to unaddressed accessibility or deployment issues.\n\n**2.  Demo Structure & Content (Medium Priority):**\n    * **Known:**  Demo date and target audience.\n    "
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 156,
+            "completionTokens": 96,
+            "latencyMs": 1849,
+            "totalTokens": 1319
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "testCase": 2,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Next Actions for Public Demo:\n\n**Known:**\n* Prototype exists.\n* Friday demo is imminent.\n* Two engineers available.\n\n**Unknown:**\n* Budget confirmation.\n* Accessibility and deployment testing status.\n*  Demo content and audience.\n\n**Potential Risk:**  Insufficient budget or time constraints may hinder the demo's success.\n\n**Prioritized Actions:**\n\n1. **Accessibility & Deployment Testing (High):**  Prioritize testing to"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 183,
+            "completionTokens": 96,
+            "latencyMs": 1742,
+            "totalTokens": 1598
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "status": "judging",
+            "evaluation": "same-model-judge"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\"base_scores\": [85, 80], \"candidate_scores\": [90, 85], \"rationale\": \"Candidate output demonstrates a more structured and prioritized approach, focusing on dependencies and risks. It also incorporates a clearer understanding of the known and unknown factors, leading to a more actionable plan.\"}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 837,
+            "completionTokens": 69,
+            "latencyMs": 1832,
+            "totalTokens": 2504
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 1,
+            "baseScores": [
+              85,
+              80
+            ],
+            "candidateScores": [
+              90,
+              85
+            ],
+            "baseScore": 82.5,
+            "candidateScore": 87.5,
+            "deltaScore": 5.0,
+            "accepted": true,
+            "rationale": "Candidate output demonstrates a more structured and prioritized approach, focusing on dependencies and risks. It also incorporates a clearer understanding of the known and unknown factors, leading to a more actionable plan.",
+            "status": "complete"
+          }
+        },
+        {
+          "event": "compose",
+          "data": {
+            "iteration": 1,
+            "component": "system_prompt",
+            "instruction": "Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment have not been tested. The prototype exists, but budget and testing are not confirmed.  Include what is known versus unknown, and identify one potential risk.",
+            "accepted": true,
+            "harness": [
+              "Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment have not been tested. The prototype exists, but budget and testing are not confirmed.  Include what is known versus unknown, and identify one potential risk."
+            ],
+            "status": "complete"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Next Actions for Public Demo:\n\n**1.  Accessibility & Deployment Assessment (High Priority):**  \n    * **Known:** Prototype exists. \n    * **Unknown:**  Accessibility & deployment functionality, potential issues.\n    * **Action:**  Engineers assess prototype for accessibility and deployment. \n    * **Risk:**  Unforeseen issues discovered could delay demo and require significant rework.\n\n**2.  Demo Structure & Content (Medium Priority):"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 156,
+            "completionTokens": 96,
+            "latencyMs": 1632,
+            "totalTokens": 2756
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Prioritized Next Actions for Public Demo:\n\n**1.  Accessibility & Deployment Assessment (Dependency:  None)**\n    * **Known:** Prototype exists. \n    * **Unknown:**  Testing results, budget, and deployment feasibility.\n    * **Action:**  Engineers assess prototype's accessibility and deployability.  \n    * **Next Decision:**  Determine if budget is available and if testing can proceed.\n\n**2.  Demo Script & Content"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 183,
+            "completionTokens": 96,
+            "latencyMs": 1647,
+            "totalTokens": 3035
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 2,
+            "component": "system_prompt",
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\"type\": \"object\", \"properties\": {\"component\": \"system_prompt\", \"instruction\": \"Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment have not been tested. The prototype exists, but budget and testing are not confirmed. Include what is known versus unknown, and identify one potential risk.\", \"reason\": \"This instruction directly addresses the task by specifying the context and desired output, while also encouraging the agent to think about the unknown and potential risks. This will lead to more focused and actionable responses.\"}}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 259,
+            "completionTokens": 119,
+            "latencyMs": 2113,
+            "totalTokens": 3413
+          }
+        },
+        {
+          "event": "propose",
+          "data": {
+            "iteration": 2,
+            "component": "system_prompt",
+            "instruction": "Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment have not been tested. The prototype exists, but budget and testing are not confirmed. Include what is known versus unknown, and identify one potential risk.",
+            "reason": "This instruction directly addresses the task by specifying the context and desired output, while also encouraging the agent to think about the unknown and potential risks. This will lead to more focused and actionable responses.",
+            "status": "ready"
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 2,
+            "testCase": 1,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Next Actions for Public Demo:\n\n**1.  Accessibility & Deployment Assessment (High Priority):** \n    * **Known:** Prototype exists. \n    * **Unknown:**  Accessibility and deployment functionality, potential issues.\n    * **Action:**  Engineers assess prototype for accessibility and deployment readiness. \n    * **Risk:**  Unforeseen technical issues discovered during assessment could delay the demo.\n\n**2.  Demo Script & Content Outline (Medium"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 211,
+            "completionTokens": 96,
+            "latencyMs": 1853,
+            "totalTokens": 3720
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 2,
+            "testCase": 2,
+            "totalCases": 2,
+            "status": "generating"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "## Next Actions for Public Demo:\n\n**Known:**\n* Prototype exists.\n* Friday demo date is approaching.\n* Two engineers are available.\n\n**Unknown:**\n* Budget confirmation.\n* Accessibility and deployment testing status.\n*  Demo content and audience.\n\n**Potential Risk:**  Lack of budget and confirmed testing could lead to a rushed demo with limited functionality and potential for negative audience feedback.\n\n**Prioritized Actions:**\n\n1. **(High"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 238,
+            "completionTokens": 96,
+            "latencyMs": 1663,
+            "totalTokens": 4054
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 2,
+            "status": "judging",
+            "evaluation": "same-model-judge"
+          }
+        },
+        {
+          "event": "generated_text",
+          "data": {
+            "text": "{\"base_scores\": [85, 80], \"candidate_scores\": [90, 85], \"rationale\": \"Candidate output demonstrates a more thorough understanding of the task's requirements and prioritizes actions based on dependencies. It also addresses the risk of budget and testing constraints more explicitly. Base output is solid but lacks the depth of the candidate's analysis.\"}"
+          }
+        },
+        {
+          "event": "model_metrics",
+          "data": {
+            "type": "model_metrics",
+            "promptTokens": 837,
+            "completionTokens": 82,
+            "latencyMs": 2122,
+            "totalTokens": 4973
+          }
+        },
+        {
+          "event": "probe",
+          "data": {
+            "iteration": 2,
+            "baseScores": [
+              85,
+              80
+            ],
+            "candidateScores": [
+              90,
+              85
+            ],
+            "baseScore": 82.5,
+            "candidateScore": 87.5,
+            "deltaScore": 5.0,
+            "accepted": true,
+            "rationale": "Candidate output demonstrates a more thorough understanding of the task's requirements and prioritizes actions based on dependencies. It also addresses the risk of budget and testing constraints more explicitly. Base output is solid but lacks the depth of the candidate's analysis.",
+            "status": "complete"
+          }
+        },
+        {
+          "event": "compose",
+          "data": {
+            "iteration": 2,
+            "component": "system_prompt",
+            "instruction": "Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment have not been tested. The prototype exists, but budget and testing are not confirmed. Include what is known versus unknown, and identify one potential risk.",
+            "accepted": true,
+            "harness": [
+              "Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment have not been tested. The prototype exists, but budget and testing are not confirmed.  Include what is known versus unknown, and identify one potential risk.",
+              "Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment have not been tested. The prototype exists, but budget and testing are not confirmed. Include what is known versus unknown, and identify one potential risk."
+            ],
+            "status": "complete"
+          }
+        },
+        {
+          "event": "completed",
+          "data": {
+            "model": "gemma2:2b",
+            "domain": "WorkBuddy",
+            "baseOutput": "## Next Actions:\n\n1. **Accessibility Audit:**  (Known: Prototype exists) -  Assess accessibility using established guidelines (e.g., WCAG). \n2. **Deployment Setup:** (Unknown: Deployment process) -  Set up a basic deployment environment for initial testing.\n3. **Demo Script:** (Unknown: Demo content) -  Develop a concise demo script outlining key features and functionality.\n\n**Risk:**  Limited resources and time may hinder",
+            "optimizedOutput": "## Next Actions for Public Demo:\n\n**1.  Accessibility & Deployment Assessment (High Priority):** \n    * **Known:** Prototype exists. \n    * **Unknown:**  Accessibility and deployment functionality, potential issues.\n    * **Action:**  Engineers assess prototype for accessibility and deployment readiness. \n    * **Risk:**  Unforeseen technical issues discovered during assessment could delay the demo.\n\n**2.  Demo Script & Content Outline (Medium",
+            "harness": [
+              "Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment have not been tested. The prototype exists, but budget and testing are not confirmed.  Include what is known versus unknown, and identify one potential risk.",
+              "Generate a prioritized list of three next actions for a small team preparing a public demo of a prototype, considering accessibility and deployment have not been tested. The prototype exists, but budget and testing are not confirmed. Include what is known versus unknown, and identify one potential risk."
+            ],
+            "finalJudgeScore": 87.5,
+            "totalImprovement": 87.5,
+            "acceptedIterations": 2,
+            "metrics": {
+              "promptTokens": 3695,
+              "completionTokens": 1278,
+              "totalTokens": 4973,
+              "latencyMs": 23848,
+              "iterations": 2
+            },
+            "evaluation": "same-model-judge"
+          }
+        }
+      ]
+    }
+  ]
+}

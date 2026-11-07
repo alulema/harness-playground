@@ -16,8 +16,8 @@ import '../../styles/global.css';
       window.DEMO_INFO = {
         title: "Harness² AI Agent Playground",
         titleEs: "Playground de agentes IA Harness²",
-        overview: "Harness² improves an agent's instructions—not its model—in a repeating loop: Propose one prompt, memory, or tool-guidance change; Probe it on task variations; then Compose it into the harness only if the same model's judge estimates a better result. This demo runs that loop live with a bundled open-weight model; scores are estimates, not objective benchmarks.",
-        overviewEs: "Harness² mejora las instrucciones de un agente —no el modelo— en un ciclo: propone un cambio al prompt, la memoria o la guía de herramientas; lo prueba con variaciones de la tarea; y solo integra el cambio si el juez del mismo modelo estima un mejor resultado. Esta demo ejecuta el ciclo en vivo con un modelo de pesos abiertos incluido; las puntuaciones son estimaciones, no benchmarks objetivos.",
+        overview: "Inspired by Harness², this demo proposes an instruction, probes it on a task and a variation, and keeps it if the same model's judge estimates a higher score. All accepted instructions are added to the system prompt: it does not change persistent memory or invoke tools. The scores are estimates, not objective benchmarks.",
+        overviewEs: "Inspirada en Harness², esta demo propone una instrucción, la prueba en una tarea y una variación, y la conserva si el juez del mismo modelo estima una puntuación mayor. Todas las instrucciones aceptadas se añaden al prompt de sistema: no modifica memoria persistente ni invoca herramientas. Las puntuaciones son estimaciones, no benchmarks objetivos.",
         architecture: {
           description: "The Astro/React UI sends a task to FastAPI. FastAPI coordinates the Harness² demonstration loop, calls the local Ollama model for proposals, task responses, and comparative judgments, and streams events to the browser over SSE.",
           descriptionEs: "La interfaz Astro/React envía una tarea a FastAPI. FastAPI coordina el ciclo demostrativo de Harness², llama al modelo local de Ollama para propuestas, respuestas y evaluaciones comparativas, y transmite eventos al navegador mediante SSE.",
@@ -49,11 +49,13 @@ import '../../styles/global.css';
         limitations: [
           "Same-model judge scores are subjective estimates and can be self-biased; they are not objective benchmark results.",
           "This is an educational demonstration, not the original Google Harness² implementation or a validated agent optimizer.",
+          "Proposed component names are labels: accepted instructions are added to the system prompt; there is no cross-task learning or official benchmark run.",
           "The runtime limits each run to two iterations, a configurable token budget, one concurrent run, and three runs per minute per client IP."
         ],
         limitationsEs: [
           "Las puntuaciones del juez del mismo modelo son estimaciones subjetivas y pueden tener sesgos; no son resultados objetivos de benchmark.",
           "Es una demostración educativa, no la implementación original de Google Harness² ni un optimizador de agentes validado.",
+          "Los nombres de componentes son etiquetas: las instrucciones aceptadas se añaden al prompt de sistema; no hay aprendizaje entre tareas ni ejecución de benchmarks oficiales.",
           "El runtime limita cada ejecución a dos iteraciones, un presupuesto de tokens configurable, una ejecución simultánea y tres ejecuciones por minuto por IP."
         ],
         links: { repo: "https://github.com/alulema/harness-playground" },

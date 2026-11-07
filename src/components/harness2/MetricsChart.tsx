@@ -33,7 +33,7 @@ export default function MetricsChart({ steps, metrics }: { steps: StepEvent[]; m
               <CartesianGrid stroke="var(--color-border, rgba(255,255,255,0.08))" strokeDasharray="3 5" vertical={false} />
               <XAxis axisLine={false} dataKey="iteration" tick={{ fill: 'var(--color-text-muted, #8b8993)', fontSize: 10 }} tickLine={false} />
               <YAxis axisLine={false} domain={[0, 100]} tick={{ fill: 'var(--color-text-muted, #8b8993)', fontSize: 10 }} tickLine={false} ticks={[0, 25, 50, 75, 100]} />
-              <Tooltip contentStyle={{ backgroundColor: 'var(--color-bg-card, #17171e)', border: '1px solid var(--color-border, rgba(255,255,255,0.1))', borderRadius: 10, color: 'var(--color-text, #e4e4e7)', fontSize: 12 }} formatter={(value) => [`${value}%`, 'Score']} />
+              <Tooltip contentStyle={{ backgroundColor: 'var(--color-bg-card, #17171e)', border: '1px solid var(--color-border, rgba(255,255,255,0.1))', borderRadius: 10, color: 'var(--color-text, #e4e4e7)', fontSize: 12 }} formatter={(value) => [`${value} / 100`, 'Judge score']} />
               <Line activeDot={{ r: 4, strokeWidth: 0 }} dataKey="before" dot={{ r: 3, fill: 'var(--color-text-muted, #8b8993)', strokeWidth: 0 }} name="Current harness" stroke="var(--color-text-muted, #8b8993)" strokeDasharray="4 4" strokeWidth={1.5} type="monotone" />
               <Line activeDot={{ r: 4, strokeWidth: 0 }} dataKey="score" dot={{ r: 3, fill: 'var(--color-accent, #8b70ff)', strokeWidth: 0 }} name="Candidate harness" stroke="var(--color-accent, #8b70ff)" strokeWidth={2.5} type="monotone" />
             </LineChart>

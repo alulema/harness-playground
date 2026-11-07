@@ -53,7 +53,8 @@ export interface RunResult {
   model: string;
   baseOutput: string;
   optimizedOutput: string;
-  totalImprovement: number;
+  finalJudgeScore?: number;
+  illustrativeImprovement?: number;
   harness: string[];
   acceptedIterations: number;
   metrics: RunMetrics;
